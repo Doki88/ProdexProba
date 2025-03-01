@@ -1,0 +1,248 @@
+.contact-title{
+    font-size: 30px;
+    color: black;
+    text-align: left;
+    border-left: 4px solid #03fcad;
+    margin-left: 80px;
+    margin-top: 40px;
+    padding-left: 10px;
+}
+.section__padding{
+    padding: 4rem 4rem;
+}
+
+.contact-container{
+    background-color: white;
+    
+}
+
+.contact-flex > div{
+     margin: 10px;
+    
+}
+
+.contact-flex{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 8%;
+ }
+
+ 
+ .contact-flex-one {
+    background-color: white;
+    text-align: center;
+    line-height: 35px;
+    font-size: 30px;
+ 
+  }
+.contact-flex-two {
+       text-align: left;
+       justify-self: flex-start
+  }
+.contact-flex-one p{
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 0.5rem 0;
+    cursor: pointer;
+    color: black;
+    text-align: left;
+    padding-left: .5em;
+    padding-top: .5em;
+}
+
+.contact-flex-multi{
+    display: flex; 
+    border-top: 3px solid #03fcad;
+
+}
+
+.contact-flex-multi p{
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 0.5rem 0;
+    cursor: pointer;
+    color: black;
+}
+
+.contact-flex-two-multi-inner-middle p{
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 0.5rem 0;
+    cursor: pointer;
+    color: black;
+}
+
+.contact-flex-two-text {
+    border-top: 3px solid #03fcad;
+
+}
+
+.contact-flex-two-multi-inner-middle {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+ 
+.contact-flex-two-multi-inner  {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 0.5rem 0;
+    cursor: pointer;
+    color: black;
+}
+ 
+
+ 
+.working-hours {
+    margin-left: 80px;
+    font-size: 14px;
+}
+
+/* @media screen and (max-width: 850px){
+    .sb_contact-heading h1{
+        font-size: 44px;
+        line-height: 50px;
+    }
+}
+
+@media screen and(max-width: 550px){
+    .sb_contact-heading h1{
+        font-size:  34px;
+        line-height: 42px;
+    }
+
+    .sb_contact-links div {
+        margin: 1rem 0;
+    }
+    .sb__footer-btn p{
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .sb_contact-below{
+        flex-direction: column;
+        justify-content: left;
+    }
+    .sb_contact-below-links{
+        flex-direction: column;
+    }
+    .sb_contact-below-links p {
+        margin-left: 0rem;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .sb_contact-heading h1{
+        font-size: 27px;
+        line-height: 38px;
+    }
+    
+} */
+
+/* * {
+    box-sizing: border-box;
+  } */
+  
+  /* input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    border: 3px solid #45a049; */
+
+    /* background-image: url('searchicon.png'); */
+
+  /* } */
+  
+  
+ 
+  /* input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }  
+
+  .email-container{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 80%;
+  }
+   
+  */
+
+.firstrow {
+    background-color: white;
+    display: flex;
+}
+
+.firstrow > div {
+    margin-left: 10px;
+}
+.firstrow-data {
+    width: 270px;
+    height: 20px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #03fcad;;
+    border-radius: 4px;
+}
+
+.message-title {
+    margin-left: 10px;
+}
+
+.message-title-input {
+    width: 830px;
+    height: 20px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #03fcad;
+    border-radius: 4px;
+}
+.formData {
+    margin-left: 70px;
+}
+
+.text-area {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.text-area-data {
+    width: 830px;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #03fcad;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 16px;
+    resize: none;
+}
+
+.contactButton {
+    margin-left: 10px;
+}
+
+.contactButton button {
+    background-color: #03fcad;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }

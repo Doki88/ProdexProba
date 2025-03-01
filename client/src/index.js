@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { AppContext } from './AppContext';
  
 import Home from "./pages/Home";
-// import Contact from './pages/Contact';
+import Contact from './pages/Contact';
 // import NotFound from './pages/NotFound';
 // import About from './pages/About';
 // import Pricing from './pages/Pricing';
@@ -55,8 +55,8 @@ function App(){
 
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    {/* <Route path="/contact" element={<Contact/>}/>
-                    <Route path="*" element={<NotFound/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
+                     {/*<Route path="*" element={<NotFound/>}/>
                     <Route path="/pricing" element={<Pricing/>}></Route>
                     <Route path="/about" element={<About/>}></Route>*/}
                     <Route path="/products" element={<Products/>}></Route> 
