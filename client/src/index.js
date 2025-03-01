@@ -9,8 +9,8 @@ import Home from "./pages/Home";
 // import Pricing from './pages/Pricing';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // // import { Footer, Navbar } from './components/layout';
-// import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 // import ProductList from './pages/admin/products/ProductList';
 // import CreateProduct from './pages/admin/products/CreateProduct';
 // import { AdminRoute, AuthenticatedUserRoute } from './components/authorization';
@@ -51,7 +51,8 @@ function App(){
     <AppContext.Provider>
       
          <BrowserRouter>  
-             
+           <Navbar/>
+
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     {/* <Route path="/contact" element={<Contact/>}/>
@@ -70,7 +71,7 @@ function App(){
                     
  
                 </Routes>  
-               
+              <Footer/>
         </BrowserRouter>
     </AppContext.Provider>
   )
