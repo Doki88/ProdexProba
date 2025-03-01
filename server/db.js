@@ -3,8 +3,6 @@ import mongoose from 'mongoose'
 const connectToDatabase = async () => {
     try {
         mongoose.set('strictQuery', false)  
-
-        console.log('evo ga :' + process.env.MONGO_URI)
         
         const connect = await mongoose.connect(process.env.MONGO_URI, {
             //useUnifiedTopology: true,
@@ -17,3 +15,5 @@ const connectToDatabase = async () => {
 }
 
 export default connectToDatabase
+
+ 

@@ -1,10 +1,12 @@
 import express from 'express'
 import Product from '../models/Product.js'
+import asyncHandler from 'express-async-handler';
+
 
 const productRoutes = express.Router()
 
 const getProducts =  async (req,res) => {
-     //const products = await Product.find({})
+    // const products = await Product.find({})
 
     // res.json({
     //     products,
@@ -12,36 +14,31 @@ const getProducts =  async (req,res) => {
     // })
     const page = parseInt(req.params.page); // 1, 2 or 3
 	const perPage = parseInt(req.params.perPage); // 10
-    //const proba = req.params[0];
     const sort = req.params.sort;
     const order = req.params.order;
+    const categoryAndBrand = req.params.categoryAndBrand;
     const search = req.params.search;
-    const brand = req.params.brand;
-    const category = req.params.category;
-
-    //console.log('evo i probe: ' + proba)
-    //console.log("brend: " + brand + " kategorija: " + category)
-    
+    // const category = req.params.category;    
+    // const brand = req.params.brand;    
 
 	let products = await Product.find({});
 
-    console.log('evo producta:')
+    console.log('evo produkata:')
     console.log(products)
 
-    if(brand){
-        console.log('usao sam u brand')
-        products = products.filter((product) => product.brand == brand);
-    }
-
-    if(category){
-        console.log('usao sam u kategoriju')
-        products = products.filter((product) => product.category == category);
-    }
-
-  
+    if(categoryAndBrand && categoryAndBrand != 'proba'){
+        let brand = categoryAndBrand.split("-")[0]
+        let category = categoryAndBrand.split("-")[1]
+       
+        if(brand){
+            products = products.filter((product) => product.brand == brand);
+        }
     
- 
-   
+        if(category){
+            products = products.filter((product) => product.category == category);
+        }
+    }
+    
     if(sort && order){
         products = _.orderBy(products, ['name'], ['asc']);  //verovatno treba da se promeni u sort i order da po njima sortira
     }
@@ -52,10 +49,9 @@ const getProducts =  async (req,res) => {
         //          return el.name.includes(search)  
         //     }
         // );
-
         let result = [];
         products.forEach(product => {
-            if (product.name.toLowerCase().includes(search)) {
+            if (product.name.toLowerCase().includes(search.toLowerCase())) {
                 result.push(product);
             }
         });
@@ -76,9 +72,101 @@ const getProducts =  async (req,res) => {
 		res.json({ products, pagination: {} });
 	}
 }
-productRoutes.route('/:page/:perPage/:sort/:order/:search').get(getProducts);
-productRoutes.route('/:page/:perPage/:sort/:order').get(getProducts);
-productRoutes.route('/:brand/:category').get(getProducts);
+
+const getProduct = async (req, res) => {
+
+ 	const product = await Product.findById(req.params.id);
+
+	if (product) {
+		res.json(product);
+	} else {
+		res.status(404);
+		throw new Error('Product not found');
+	}
+};
+
+const createNewProduct = asyncHandler(async (req, res) => {
+    const name = req.body.product.name;
+    const brand = req.body.product.brand;
+    const category = req.body.product.category;
+    const price = parseInt(req.body.product.price);
+    const description = req.body.product.description;
+ 
+    const newProduct = await Product.create({
+         brand,
+         name,
+         category,
+         price,
+         // images: images,
+         description,
+     });
+     await newProduct.save();
+ 
+     const products = await Product.find({});
+ 
+     if (newProduct) {
+         res.json(products);
+     } else {
+         res.status(404);
+         throw new Error('Product could not be uploaded.');
+     }
+ });
+
+ const updateProduct = asyncHandler(async (req, res) => {
+	//const { brand, name, category, stock, price, id, productIsNew, description } = req.body;
+
+    const name = req.body.product.name;
+    const brand = req.body.product.brand;
+    const category = req.body.product.category;
+    const price = parseFloat(req.body.product.price);
+    const description = req.body.product.description;
+    const id = req.body.product.id;
+
+   
+	const product = await Product.findById(id);
+
+	if (product) {
+		product.name = name;
+		product.price = price;
+		product.description = description;
+		product.brand = brand;
+		product.category = category;
+	 
+
+	 	await product.save();
+
+		const products = await Product.find({});
+
+		res.json(products);
+	} else {
+		res.status(404);
+		throw new Error('Product not found.');
+	}
+});
+
+ const deleteProduct = asyncHandler(async (req, res) => {
+	const product = await Product.findByIdAndDelete(req.params.id);
+
+	if (product) {
+		res.json(product);
+	} else {
+		res.status(404);
+		throw new Error('Product not found');
+	}
+});
+
+productRoutes.route('/:page/:perPage/:categoryAndBrand/:search').get(getProducts);
+productRoutes.route('/:page/:perPage/:categoryAndBrand').get(getProducts);
+// productRoutes.route('/:categoryAndBrand').get(getProducts);
+//productRoutes.route('/:search').get(getProducts);
+// productRoutes.route('/:categoryAndBrand/:search').get(getProducts);
 productRoutes.route('/').get(getProducts);
+productRoutes.route('/:page/:perPage').get(getProducts);
+
+productRoutes.route('/:id').get(getProduct);
+productRoutes.route('/').post(createNewProduct);
+productRoutes.route('/:id').delete(deleteProduct);
+productRoutes.route('/').put(updateProduct);
+
 
 export default productRoutes
