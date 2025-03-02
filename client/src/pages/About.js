@@ -1,9 +1,11 @@
 import "../styles/about.css"
- 
+import Main from "./common/Main"
+
 
 export default function About(){
     return (
         <>
+            <Main/>
              <div className="main-box">
                 <div className="inner-box">
                     <div className="text-box">
