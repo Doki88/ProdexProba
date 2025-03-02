@@ -1,3 +1,5 @@
+import Slideshow from "./Slideshow";
+
 export default function Main(){
 
     return (
@@ -23,7 +25,7 @@ export default function Main(){
                 </div>
                     <div className="col-md-6 text-center">
                     {/* <img src="/images/hero.jpg" className="img-fluid" alt="hero"/> */}
-                    
+                    <Slideshow/>
                 </div>
             </div>
         
