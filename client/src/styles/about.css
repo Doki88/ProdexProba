@@ -1,0 +1,55 @@
+.main-box {
+    margin-left: 83px;
+    
+}
+.inner-box {
+    display: flex;
+    margin-top: 20px;
+}
+.text-box {
+    width: 40%;
+    
+ }
+ .text-box-bottom{
+    width: 40%;
+    margin-left: 20px;
+ }
+ .text-box p{
+    font-size: 13px;
+    
+ }
+ .text-box-bottom p{
+    font-size: 13px;
+
+ } 
+.img-box {
+    width: 40%;
+    
+ }
+ .title {
+    border-left: 2px solid #03fcad;
+    padding-left: 10px;
+ }
+
+ .galery{
+    margin-top: 50px;
+ }
+
+ .galery-slider {
+    margin-top: 40px;
+    width: 40%;
+    margin-left: 23%;
+ }
+
+ .gallery-bottom {
+    margin-top: 10px;
+    margin-right: 8%;
+    border-top: 2px solid #03fcad;
+    display: flex;
+ }
+
+.galery-img {
+    width: 24%;
+    margin-right: 10px;
+    padding-top: 10px;
+}
