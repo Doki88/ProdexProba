@@ -82,6 +82,7 @@ function ImageSlider({ imageUrls}){
                       key={url}
                       src={url} className="img-slider-img"
                       style={{translate: `${-100 * imageIndex}%`}}
+                      alt="..."
                   />
               ))}
           </div>

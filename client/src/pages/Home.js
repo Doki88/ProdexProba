@@ -1,4 +1,5 @@
 import "../styles/home.css"
+import Main from "./common/Main"
    
 export default function Home(){
 
@@ -6,6 +7,7 @@ export default function Home(){
   
     return (
          <>
+                <Main/>
                 <div class="cl-title">
 		            <h1>ELEKTROMATERIJAL, SKLOPNA TEHNIKA
                         <br></br>I RELEJNA OPREMA

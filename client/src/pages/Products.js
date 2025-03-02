@@ -1,38 +1,54 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
- 
- 
+import Main from "./common/Main"
+// import BottomSlider from "./common/BottomSlider"
+import "../styles/products.css"
 
 export default function Products(){
 
     const [products, setProducts] = useState([])
 
+     //pagination functionality
      const [currentPage, setCurrentPage] = useState(1)
      const [totalPages, setTotalPages] = useState(1)
      const pageSize = 8
 
+     //filter functionality
      const [filterParams, setFilterParams] = useState({brand:"", category:""})
 
+    // sort functionality
      const [sortColumn, setSortColumn] = useState({column: "id", orderBy: "desc"})
 
     // search functionality
     const [searchValue, setSearchValue] = useState("")
 
     function getProducts(){
-
-        console.log('evo me tu sam')
        
-         
-       let url =  `http://localhost:5000/api/products`
-
+        let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+        // let url =  `http://localhost:5000/api/products/`
+        //let url =  `http://localhost:5000/api/products/${filterParams.brand}/${filterParams.category}`
         
+        
+        if(filterParams.category || filterParams.brand){     
+            
+            url = url + `${filterParams.brand}-${filterParams.category}/`
+        } else {
+            url = url + 'proba/'
+        }
+
+    //     if(filterParams.brand){
+            
+    //         url = url + `${filterParams.brand}/`
+    //        //url = url + "&brand=" + filterParams.brand
+             
+    //    } 
 
         if(searchValue){
            
             url = url + searchValue
          }
 
-       
+        
          fetch(url)
 
         .then(response => {
@@ -51,10 +67,7 @@ export default function Products(){
             setTotalPages(data.pagination.totalPages)
         })
         .catch(error => {
-            alert("Unable to get the data i ovo jos novo")
-            console.log('evo greske') 
-            console.log(error.stack)
-            alert(error.stack)
+            alert("Unable to get the data")
         })
     }
 
@@ -110,8 +123,8 @@ export default function Products(){
   
     return (
          <>
-            
-            
+             
+            <Main/>
 
             <div className="products-main-box">
                 <div>
@@ -143,7 +156,18 @@ export default function Products(){
                             </div>
                         </div>
                        
-                       
+                        {/* <div className="col-md-2">
+                            <select className="form-select" onChange={handleSort}>
+                                <option value="0">Order By Newest</option>
+                                <option value="1">Price: Low to High</option>
+                                <option value="2">Price: High to Low</option>
+                            </select>
+                        </div> */}
+                          {/* <div className="col-md-2">
+                             <div className="form-outline" data-mdb-input-init>
+                                <input type="search" id="form1" className="form-control" placeholder="Traži" aria-label="Search" onClick={handleSearch}/>
+                             </div>     
+                          </div> */}
                     </div>
 
                     <div className="products-container">
@@ -164,7 +188,7 @@ export default function Products(){
                 </div>
 
             </div>
-            
+            {/* <BottomSlider/> */}
          </>
     )
 }

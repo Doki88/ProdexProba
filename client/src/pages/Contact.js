@@ -1,11 +1,13 @@
  
 import "../styles/contact.css"
+import Main from "./common/Main";
 
 export default function Contact(){
 
     
     return (
         <>
+             <Main/>
              <div className="contact-container">
                 <div className="contact-title">
                     KONTAKT
