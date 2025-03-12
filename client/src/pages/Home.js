@@ -8,7 +8,7 @@ export default function Home(){
     return (
          <>
                 <Main/>
-                <div class="cl-title">
+                <div className="cl-title">
 		            <h1>ELEKTROMATERIJAL, SKLOPNA TEHNIKA
                         <br></br>I RELEJNA OPREMA
                     </h1>

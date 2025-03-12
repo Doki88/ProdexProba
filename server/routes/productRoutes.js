@@ -16,50 +16,59 @@ const getProducts =  async (req,res) => {
 	const perPage = parseInt(req.params.perPage); // 10
     const sort = req.params.sort;
     const order = req.params.order;
-    const categoryAndBrand = req.params.categoryAndBrand;
+    // const categoryAndBrand = req.params.categoryAndBrand;
+    const brand = req.params.categoryAndBrand;
+
     const search = req.params.search;
     // const category = req.params.category;    
-    // const brand = req.params.brand;    
+ 
+   
 
 	let products = await Product.find({});
 
-    if(categoryAndBrand && categoryAndBrand != 'proba'){
-        let brand = categoryAndBrand.split("-")[0]
-        let category = categoryAndBrand.split("-")[1]
-       
-        if(brand){
+    if(brand){
             products = products.filter((product) => product.brand == brand);
-        }
-    
-        if(category){
-            products = products.filter((product) => product.category == category);
-        }
-    }
-    
-    if(sort && order){
-        products = _.orderBy(products, ['name'], ['asc']);  //verovatno treba da se promeni u sort i order da po njima sortira
     }
 
-    if(search){
+    // if(categoryAndBrand && categoryAndBrand != 'proba'){
+    //     let brand = categoryAndBrand.split("-")[0]
+    //     let category = categoryAndBrand.split("-")[1]
        
-        // products =products.filter(function (el) {
-        //          return el.name.includes(search)  
-        //     }
-        // );
-        let result = [];
-        products.forEach(product => {
-            if (product.name.toLowerCase().includes(search.toLowerCase())) {
-                result.push(product);
-            }
-        });
+    //     if(brand){
+    //         products = products.filter((product) => product.brand == brand);
+    //     }
+    
+    //     if(category){
+    //         products = products.filter((product) => product.category == category);
+    //     }
+    // }
+    
+    // if(sort && order){
+    //     products = _.orderBy(products, ['name'], ['asc']);  //verovatno treba da se promeni u sort i order da po njima sortira
+    // }
 
-        products = result;
+    // if(search){
+       
+    //     // products =products.filter(function (el) {
+    //     //          return el.name.includes(search)  
+    //     //     }
+    //     // );
+    //     let result = [];
+    //     products.forEach(product => {
+    //         if (product.name.toLowerCase().includes(search.toLowerCase())) {
+    //             result.push(product);
+    //         }
+    //     });
 
-    }
+    //     products = result;
+
+    // }
 
     // const filteredProducts = _.orderBy(products, ['name'], ['asc']);
 
 	if (page && perPage) {
+        console.log('ovde sam')
+        console.log([products])
 		const totalPages = Math.ceil(products.length / perPage);
 		const startIndex = (page - 1) * perPage;
 		const endIndex = startIndex + perPage;

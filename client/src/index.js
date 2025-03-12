@@ -18,8 +18,10 @@ import Footer from './components/Footer';
 // import EditProduct from './pages/admin/products/EditProduct';
 // import ProductDetails from './pages/admin/products/ProductDetails';
 import Products from './pages/Products';
+import ProductsCatalogs from './pages/ProductsCatalogs';
+
 // import "./styles.css"
-// import Product from './pages/Product';
+import Product from './pages/Product';
 
 
 function App(){
@@ -59,7 +61,9 @@ function App(){
                      {/*<Route path="*" element={<NotFound/>}/>
                     <Route path="/pricing" element={<Pricing/>}></Route>*/}
                     <Route path="/about" element={<About/>}></Route>
-                    <Route path="/products" element={<Products/>}></Route> 
+                    <Route path="/products" element={<ProductsCatalogs/>}></Route> 
+                    <Route path="/productscatalog" element={<Products/>}></Route> 
+
 
 
 
@@ -68,7 +72,7 @@ function App(){
                     {/* <Route path="/admin/products/edit/:id" element={<AdminRoute><EditProduct/></AdminRoute>}/> */}
                    {/* <Route path="/admin/products/edit/:id" element={ <EditProduct/>  }/>  */}
 
-                    
+                   <Route path="/products/:id" element={<Product/>}/>
  
                 </Routes>  
               <Footer/>

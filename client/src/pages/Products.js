@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import Main from "./common/Main"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/products.css"
+import NopalFilter from "../brandFilters/NopalFilter"
 
 export default function Products(){
+
+    const location = useLocation()
+    const { brand } = location.state
+
+    console.log('brand:' + brand)
+     
 
     const [products, setProducts] = useState([])
 
@@ -28,7 +35,9 @@ export default function Products(){
         // let url =  `http://localhost:5000/api/products/`
         //let url =  `http://localhost:5000/api/products/${filterParams.brand}/${filterParams.category}`
         
-        
+        if(brand){
+             url = url + `${brand}/`
+         }
         if(filterParams.category || filterParams.brand){     
             
             url = url + `${filterParams.brand}-${filterParams.category}/`
@@ -62,6 +71,9 @@ export default function Products(){
             throw new Error()
         })
         .then(data => {
+            console.log("evo date:")
+            console.log(data)
+
             setProducts(data.products)
             setCurrentPage(data.pagination.currentPage)
             setTotalPages(data.pagination.totalPages)
@@ -134,7 +146,7 @@ export default function Products(){
                         </div>
                         
                         <div className="brand-filters">
-                            <div className="brand-filter">
+                            {/* <div className="brand-filter">
                                 <select onChange={handleBrandFilter}>
                                     <option value="">Svi brendovi</option>
                                     <option value="Nopal">Nopal</option>
@@ -153,7 +165,8 @@ export default function Products(){
                                     <option value="utikaci">Utikaci</option>  
                                     <option value="Others">Drugo</option>  
                                 </select>
-                            </div>
+                            </div> */}
+                            <NopalFilter/>
                         </div>
                        
                         {/* <div className="col-md-2">
