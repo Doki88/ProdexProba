@@ -1,7 +1,13 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import "../styles/navbar.css"
+import { useState } from "react"
 
 export default function Navbar() {
+
+     const [searchValue, setSearchValue] = useState("")
+   
+
+
     return <nav className="nav">
         <Link to="/" className="site-title">PRODEX</Link>
         <ul>
@@ -13,11 +19,12 @@ export default function Navbar() {
         </ul>
 
         <div className="search-container">
-            <form action="/action_page.php">
-                <input type="text" placeholder="Pretraga..." name="search"/>
-                <button><img src="/images/svg/loupe-svgrepo-com.svg" className="img-svg-loupe"  alt="..."/></button>
-            </form>
-         </div>
+                 <input type="text" placeholder="Pretraga..." name="search" onChange={e => setSearchValue(e.target.value)} />
+                 <Link to={"/filteredproducts/" } state={{ searchValue: searchValue }} className="linkbutton"   > 
+                      <img src="/images/svg/loupe-svgrepo-com.svg" className="img-svg-loupe"  alt="..."/> 
+                </Link>
+               
+          </div>
     </nav>
 }
 
@@ -31,4 +38,8 @@ function CustomLink({to, children, ...props}) {
             </Link>
         </li>
     )
+}
+
+function Ispis(input){
+    console.log('evo searcha:' + input.searchValue)
 }

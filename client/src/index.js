@@ -22,6 +22,7 @@ import ProductsCatalogs from './pages/ProductsCatalogs';
 
 // import "./styles.css"
 import Product from './pages/Product';
+import FilteredProducts from './pages/FilteredProducts';
 
 
 function App(){
@@ -63,6 +64,8 @@ function App(){
                     <Route path="/about" element={<About/>}></Route>
                     <Route path="/products" element={<ProductsCatalogs/>}></Route> 
                     <Route path="/productscatalog" element={<Products/>}></Route> 
+                    <Route path="/filteredproducts" element={<FilteredProducts/>}></Route> 
+
 
 
 

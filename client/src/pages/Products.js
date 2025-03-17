@@ -10,9 +10,6 @@ export default function Products(){
     const location = useLocation()
     const { brand } = location.state
 
-    console.log('brand:' + brand)
-     
-
     const [products, setProducts] = useState([])
 
      //pagination functionality
@@ -38,11 +35,11 @@ export default function Products(){
         if(brand){
              url = url + `${brand}/`
          }
-        if(filterParams.category || filterParams.brand){     
+        if(filterParams.category){     
             
-            url = url + `${filterParams.brand}-${filterParams.category}/`
+            url = url + `${filterParams.category}/`
         } else {
-            url = url + 'proba/'
+            url = url + 'all/'
         }
 
     //     if(filterParams.brand){
@@ -114,7 +111,7 @@ export default function Products(){
         let category = event.target.value
         setFilterParams({...filterParams, category: category})
         setCurrentPage(1)
-    }
+     }
 
     // sort functionality
     function handleSort(event){
@@ -166,7 +163,7 @@ export default function Products(){
                                     <option value="Others">Drugo</option>  
                                 </select>
                             </div> */}
-                            <NopalFilter/>
+                            <NopalFilter handleCategoryFilter={handleCategoryFilter}/>
                         </div>
                        
                         {/* <div className="col-md-2">
@@ -176,11 +173,11 @@ export default function Products(){
                                 <option value="2">Price: High to Low</option>
                             </select>
                         </div> */}
-                          {/* <div className="col-md-2">
+                          <div className="col-md-2">
                              <div className="form-outline" data-mdb-input-init>
                                 <input type="search" id="form1" className="form-control" placeholder="Traži" aria-label="Search" onClick={handleSearch}/>
                              </div>     
-                          </div> */}
+                          </div>
                     </div>
 
                     <div className="products-container">

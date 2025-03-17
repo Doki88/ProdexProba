@@ -1,12 +1,11 @@
 
-export default function NopalFilter(){
+export default function NopalFilter({ handleCategoryFilter }){
 
    
     return (
           <>
              <div className="brand-filter">
-                {/* <select onChange={handleCategoryFilter}> */}
-                <select>
+                <select onChange={handleCategoryFilter}>
                     <option value="">Prikazi sve</option>
                     <option value="prekidaci">Prekidaci</option>
                     <option value="uticnice">Uticnice</option>

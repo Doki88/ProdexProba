@@ -6,30 +6,32 @@ import asyncHandler from 'express-async-handler';
 const productRoutes = express.Router()
 
 const getProducts =  async (req,res) => {
-    // const products = await Product.find({})
-
-    // res.json({
-    //     products,
-    //     pagination: {},
-    // })
+   
     const page = parseInt(req.params.page); // 1, 2 or 3
 	const perPage = parseInt(req.params.perPage); // 10
     const sort = req.params.sort;
     const order = req.params.order;
     // const categoryAndBrand = req.params.categoryAndBrand;
-    const brand = req.params.categoryAndBrand;
-
+    const brand = req.params.brand;
+    const category = req.params.category;
     const search = req.params.search;
-    // const category = req.params.category;    
- 
-   
+
+    console.log('search:'+search)
 
 	let products = await Product.find({});
 
-    if(brand){
+    if(brand && brand!='all'){
             products = products.filter((product) => product.brand == brand);
     }
 
+    //napravicu da postoji kategorija "all" koja ce biti defaultna
+    //i onda cu ako je ta kategorija preskakati i necu filtrirati
+    //time sam postigao da ce mi category biti obvezno polje kao i brand
+    //i posle samo dodam search
+    if(category && category!='all'){d
+            products = products.filter((product) => product.category == category);
+         
+    }
     // if(categoryAndBrand && categoryAndBrand != 'proba'){
     //     let brand = categoryAndBrand.split("-")[0]
     //     let category = categoryAndBrand.split("-")[1]
@@ -47,28 +49,26 @@ const getProducts =  async (req,res) => {
     //     products = _.orderBy(products, ['name'], ['asc']);  //verovatno treba da se promeni u sort i order da po njima sortira
     // }
 
-    // if(search){
+    if(search){
        
-    //     // products =products.filter(function (el) {
-    //     //          return el.name.includes(search)  
-    //     //     }
-    //     // );
-    //     let result = [];
-    //     products.forEach(product => {
-    //         if (product.name.toLowerCase().includes(search.toLowerCase())) {
-    //             result.push(product);
-    //         }
-    //     });
+        // products =products.filter(function (el) {
+        //          return el.name.includes(search)  
+        //     }
+        // );
+        let result = [];
+        products.forEach(product => {
+            if (product.name.toLowerCase().includes(search.toLowerCase())) {
+                result.push(product);
+            }
+        });
 
-    //     products = result;
+        products = result;
 
-    // }
+    }
 
     // const filteredProducts = _.orderBy(products, ['name'], ['asc']);
 
 	if (page && perPage) {
-        console.log('ovde sam')
-        console.log([products])
 		const totalPages = Math.ceil(products.length / perPage);
 		const startIndex = (page - 1) * perPage;
 		const endIndex = startIndex + perPage;
@@ -161,8 +161,12 @@ const createNewProduct = asyncHandler(async (req, res) => {
 	}
 });
 
-productRoutes.route('/:page/:perPage/:categoryAndBrand/:search').get(getProducts);
-productRoutes.route('/:page/:perPage/:categoryAndBrand').get(getProducts);
+// productRoutes.route('/:page/:perPage/:categoryAndBrand/:search').get(getProducts);
+// productRoutes.route('/:page/:perPage/:categoryAndBrand').get(getProducts);
+productRoutes.route('/:page/:perPage/:brand/:category/:search').get(getProducts);
+
+productRoutes.route('/:page/:perPage/:brand/:category').get(getProducts);
+// productRoutes.route('/:page/:perPage/:brand').get(getProducts);
 // productRoutes.route('/:categoryAndBrand').get(getProducts);
 //productRoutes.route('/:search').get(getProducts);
 // productRoutes.route('/:categoryAndBrand/:search').get(getProducts);

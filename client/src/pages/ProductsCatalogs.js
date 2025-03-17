@@ -28,12 +28,12 @@ export default function ProductsCatalogs(){
             brand: ""
         },
         {
-            image:   "/images/catalogs/sklopkaJednopolnaAling.png",
+            image: "/images/catalogs/sklopkaJednopolnaAling.png",
             title: "Nopal",
             brand: "Nopal"
         },
         {
-            image:   "/images/catalogs/sklopkaJednopolnaAling.png",
+            image: "/images/catalogs/sklopkaJednopolnaAling.png",
             title: "Aling Conel",
             brand: "Aling Conel"
         }
