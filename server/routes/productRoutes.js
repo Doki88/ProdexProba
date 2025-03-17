@@ -28,7 +28,7 @@ const getProducts =  async (req,res) => {
     //i onda cu ako je ta kategorija preskakati i necu filtrirati
     //time sam postigao da ce mi category biti obvezno polje kao i brand
     //i posle samo dodam search
-    if(category && category!='all'){d
+    if(category && category!='all'){
             products = products.filter((product) => product.category == category);
          
     }
