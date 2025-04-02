@@ -1,0 +1,63 @@
+.mainContainer{
+    margin-left: 80px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.upperContainer {  
+    display: flex;
+    
+ 
+  } 
+.upperContainer > div{
+    margin-left: 20px;
+}
+
+.imageContainer1{
+    border: 2px solid #03fcad;
+}
+
+.imageContainer2{
+    border: 2px solid #03fcad;
+}
+ 
+ 
+
+.descriptionContainer {
+    margin-left: 20px;
+    margin-right: 180px;
+    margin-top: 30px;
+   
+
+}
+
+.descriptionTitle {
+    border: 2px solid #03fcad;
+    padding: 5px;
+}
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #03fcad;
+    height: 40px;
+    background-color: #929694;
+    padding-left: 10px;
+}
+.titleContainer{
+    width: 300px;
+}
+.priceRed {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #03fcad;
+    height: 40px;
+    background-color: #e7f1ec;
+    padding-left: 10px;
+}
+.features {
+    margin-top: 5px;
+     
+}
+.featureRed {
+    color:red
+}

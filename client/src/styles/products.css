@@ -68,3 +68,8 @@
   width: 100%;
 
 }
+
+.page-item-active {
+   background-color: red;
+   font-size: 50px;
+}

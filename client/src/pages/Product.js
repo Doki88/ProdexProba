@@ -9,16 +9,30 @@ export default function Product(){
 
     const params = useParams()
     const [product, setProduct] = useState({})
+    const [features, setFeatures] = useState([])
+    
 
     async function getProductDetails(){
-        console.log('evo me ovde:')
+         
         try {
             let response = await fetch("http://localhost:5000/api/products/" + params.id)
             let data = await response.json()
 
             if(response.ok){
-                
+              
                 setProduct(data)
+
+                if(data.description)
+                  {
+                    const description1= data.description 
+                    const proba = description1.split(';')
+                    setFeatures(proba)
+                    console.log(proba[0])
+                  }
+                  
+                 
+                console.log('evo em')
+              
              }
             else{
                 alert("Unable to get the product details")
@@ -36,55 +50,86 @@ export default function Product(){
     return (
         <>
         <Main/>
-         <div className="container my-4">
-            <div>
-             
-            <img src={product.images}
-                    className="img-fluid" alt="..."
-                    />   
-                <h3> {product.images}</h3>     
-            </div>
-            <div className="row">
-                {/* <div className="col-md-4 text-center">
-                    <img src={product.name}
-                        className="img-fluid mb-3" alt="..." width="250"/>
-                </div> */}
-                <div className="col-md-8">
-                    <h3 className="mb-3">{product.name}</h3>
-                    <h3 className="mb-3">{product.price} KM</h3>
-                    {/* <button type="button" className="btn btn-warning btn-sm">
-                        Add to Cart <i className="bi bi-cart4"></i>
-                    </button> */}
-
-                    <hr/>
-
-                    <div className="row mb-3">
-                        <div className="col-sm-3 fw-bold">
-                            Proizvođač
-                        </div>
-                        <div className="col-sm-9">
-                            {product.brand}
-                        </div>
-                    </div>
-
-                    <div className="row mb-3">
-                        <div className="col-sm-3 fw-bold">
-                            Kategorija
-                        </div>
-                        <div className="col-sm-9">
-                            {product.category}
-                        </div>
-                    </div>
-
-                    <div className="fw-bold">Opis proizvoda</div>
-                    <div style={{ whiteSpace: "pre-line" }}>
-                        {product.description}
-                    </div>
+          <div className="mainContainer">
+            <div className="upperContainer">
+                <div className="imageContainer1">
+                    
+                    {product.image1 &&
+                         <img src={product.image1}
+                    
+                         style={{width: "220px"}}
+                         alt="..."
+                         />   
+                    }     
                 </div>
-            </div>
-         </div>
+                <div className="titleContainer">
+                     <h3>{product.name}</h3>
+                    
+                     { product.price!== 0 &&
+                          <p className="price">Cijena: {product.price} KM </p>
+                     }
+                      {product.price === 0 &&
+                          <p className="priceRed">samo po narudžbi </p>
+                     }
+                        
+                       
+                     <p>Kataloški broj: {product.serialNumber}</p>
+                     
+                  
+                </div>
+                {product.image2 &&
+                <div className="imageContainer2">
+                    
+                         <img src={product.image2}
+                         style={{width: "220px"}}
+                         alt="..."
+                         />   
+                        
+                </div>
+                }
+            </div>    
+            <div className="descriptionContainer">
+                <div className="descriptionTitle">
+                    Opis
+                </div>
+                <div className="features">
+                        {
+                            features.map((feature, index) => {
+                                return (
+                                    <div key={index}>
+                                         <FeatureItem feature={feature}/>
+                                         
+                                     </div>
+                                )
+                            })
+                       }
+                </div>
+                
+            </div>        
+          </div>
          {/* <BottomSlider/> */}
         </>
        
     )
+}
+
+function FeatureItem({feature}){
+    if(feature.startsWith("opiscrveno")){
+        const proba = feature.split(':')
+        
+        feature = proba[1]
+        return(
+       
+            <div className="featureRed">
+                -{feature}
+             </div>
+        )
+    }
+    return(
+       
+        <div >
+            -{feature}
+         </div>
+    )
+
 }

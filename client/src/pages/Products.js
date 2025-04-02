@@ -4,6 +4,7 @@ import Main from "./common/Main"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/products.css"
 import NopalFilter from "../brandFilters/NopalFilter"
+import FinderFilter from "../brandFilters/FinderFilter"
 
 export default function Products(){
 
@@ -15,7 +16,7 @@ export default function Products(){
      //pagination functionality
      const [currentPage, setCurrentPage] = useState(1)
      const [totalPages, setTotalPages] = useState(1)
-     const pageSize = 8
+     const pageSize = 16
 
      //filter functionality
      const [filterParams, setFilterParams] = useState({brand:"", category:""})
@@ -79,14 +80,15 @@ export default function Products(){
             alert("Unable to get the data")
         })
     }
-
+ 
     useEffect(getProducts, [currentPage, filterParams, searchValue])
 
       // pagination functionlity
     let pagintationButtons = []
     for(let i = 1; i <= totalPages; i++){
+         
           pagintationButtons.push(
-              <li className={i === currentPage ? "page-item-active" : "page-item"}  key={i}>
+               <li className={i === currentPage ? "page-item-active" : "page-item"}  key={i}>
               <a className="page-link" href={"?page=" + i} 
                   onClick={event => {
                       event.preventDefault()
@@ -163,7 +165,8 @@ export default function Products(){
                                     <option value="Others">Drugo</option>  
                                 </select>
                             </div> */}
-                            <NopalFilter handleCategoryFilter={handleCategoryFilter}/>
+                             
+                            <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
                         </div>
                        
                         {/* <div className="col-md-2">
@@ -207,7 +210,7 @@ function ProductItem({product}){
     return(
         <div className="product-item">
             <h4>{product.name}</h4>   
-            <img src={product.images[0]}
+             <img src={product.image1}
                 className="img-fluid" alt="..."
                 style={{height: "220px", objectFit:"contain"}}/>   
             <hr />

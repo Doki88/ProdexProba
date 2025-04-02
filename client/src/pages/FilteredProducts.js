@@ -41,6 +41,8 @@ export default function FilteredProducts(){
             url = url + 'all/'
         }
 
+        console.log("evo url: "+url)
+
         if(searchValue){
            
             url = url + searchValue
@@ -139,7 +141,7 @@ function ProductItem({product}){
     return(
         <div className="product-item">
             <h4>{product.name}</h4>   
-            <img src={product.images[0]}
+            <img src={product.image1}
                 className="img-fluid" alt="..."
                 style={{height: "220px", objectFit:"contain"}}/>   
             <hr />

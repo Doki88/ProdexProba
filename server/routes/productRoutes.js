@@ -16,7 +16,7 @@ const getProducts =  async (req,res) => {
     const category = req.params.category;
     const search = req.params.search;
 
-    console.log('search:'+search)
+    console.log('category:'+category)
 
 	let products = await Product.find({});
 
