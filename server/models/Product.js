@@ -44,6 +44,10 @@ const productSchema = new mongoose.Schema(
 		serialNumber: {
 			type: String,
 		},
+		catalogNumber: {
+			type: String,
+		},
+
 	},
 	{ timestamps: true }
 );

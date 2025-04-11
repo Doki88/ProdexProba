@@ -7,12 +7,12 @@ export default function NopalFilter({ handleCategoryFilter }){
              <div className="brand-filter">
                 <select onChange={handleCategoryFilter}>
                     <option value="">Prikazi sve</option>
-                    <option value="prekidaci">Prekidaci</option>
-                    <option value="uticnice">Uticnice</option>
-                    <option value="releji">Releji</option>
-                    <option value="sijalicnaGrla">Sijalicna grla</option>  
-                    <option value="utikaci">Utikaci</option>  
-                    <option value="Others">Drugo</option>  
+                    <option value="Sklopke">Sklopke</option>
+                    <option value="Utičnice">Utičnice</option>
+                    <option value="Razvodnici">Razvodnici</option>
+                    <option value="Grla za sijalice">Grla za sijalice</option>  
+                    <option value="Armature">Armature</option>  
+                    <option value="Utikači">Utikači</option>  
                  </select>
              </div>
           </>

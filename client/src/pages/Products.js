@@ -5,6 +5,10 @@ import Main from "./common/Main"
 import "../styles/products.css"
 import NopalFilter from "../brandFilters/NopalFilter"
 import FinderFilter from "../brandFilters/FinderFilter"
+import TehnoinFilter from "../brandFilters/TehnoinFilter"
+import AlingPrestigeFIlter from "../brandFilters/AlingPrestigeFIlter"
+import AlingModularFilter from "../brandFilters/AlingModularFilter"
+import RezervniGrijaciFilter from "../brandFilters/RezervniGrijaciFilter"
 
 export default function Products(){
 
@@ -165,8 +169,26 @@ export default function Products(){
                                     <option value="Others">Drugo</option>  
                                 </select>
                             </div> */}
-                             
-                            <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
+
+                    { brand === "Finder" &&
+                           <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
+                    }
+                     { brand === "Nopal" &&
+                           <NopalFilter handleCategoryFilter={handleCategoryFilter}/>
+                     }
+                    { brand === "Tehnoin" &&
+                           <TehnoinFilter handleCategoryFilter={handleCategoryFilter}/>
+                    }     
+                    { brand === "Aling Conel-prestige" &&
+                           <AlingPrestigeFIlter handleCategoryFilter={handleCategoryFilter}/>
+                    }   
+                    { brand === "Aling Conel-modular" &&
+                           <AlingModularFilter handleCategoryFilter={handleCategoryFilter}/>
+                    }  
+                    { brand === "Rezervni dijelovi-grijaci" &&
+                           <RezervniGrijaciFilter handleCategoryFilter={handleCategoryFilter}/>
+                    }      
+                           
                         </div>
                        
                         {/* <div className="col-md-2">
@@ -219,7 +241,20 @@ function ProductItem({product}){
                 {/* Brand: {product.brand}, Category: {product.category} <br/> */}
                 {/* {product.description.substr(0, 50) + "..."} */}
             </p>     
-            <h4>{product.price}KM</h4>  
+           
+            { product.description === "pometru" &&
+                 <h4>{product.price}KM/1m</h4>           
+            } 
+             { product.description !== "pometru" && product.price !== 0 && product.price !== -1 &&
+                 <h4>{product.price}KM</h4>           
+            } 
+
+            {product.price === 0 &&
+                 <h4>{product.price}samo po narudžbi</h4>  
+            }  
+            {product.price === -1 &&
+                 <h4 className="priceNegative">cijena po upitu</h4>  
+            }    
             <Link to={"/products/" + product._id} role="button" className="details-btn">Detaljnjije</Link>
         </div>
     )

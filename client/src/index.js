@@ -23,6 +23,8 @@ import ProductsCatalogs from './pages/ProductsCatalogs';
 // import "./styles.css"
 import Product from './pages/Product';
 import FilteredProducts from './pages/FilteredProducts';
+import AlingCatalogs from './catalogs/AlingCatalogs';
+import RezerveCatalog from './catalogs/RezerveCatalog';
 
 
 function App(){
@@ -65,9 +67,8 @@ function App(){
                     <Route path="/products" element={<ProductsCatalogs/>}></Route> 
                     <Route path="/productscatalog" element={<Products/>}></Route> 
                     <Route path="/filteredproducts" element={<FilteredProducts/>}></Route> 
-
-
-
+                    <Route path="/alingcatalog" element={<AlingCatalogs/>}></Route> 
+                    <Route path="/rezervnicatalog" element={<RezerveCatalog/>}></Route> 
 
 
                     {/* <Route path="/admin/products" element={<ProductList/>}/> */}

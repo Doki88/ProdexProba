@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "../styles/home.css"
 import Main from "./common/Main"
    
@@ -35,7 +36,8 @@ export default function Home(){
                             -Releji serije 56.34 raznih napona <br></br>
                             -Postolje za releje        
                                 </p>
-                            <button className="brand-button">Detaljnjije</button>
+                            <Link   to={"/productscatalog/" } state={{ brand: "Finder" }} role="button" className="brands-button">Detaljnjije</Link> 
+                            
                         </div>
                         <div className="brandbox">
                             <img src="/images/brands/ls-logo.jpg" className="img-ls" alt="hero"/>
@@ -49,7 +51,8 @@ export default function Home(){
                            LS Meta-MEC Motorna zaštitna sklopka pruža više <br></br>
                            efikasnosti kroz razne funkcije i kompaktan dizajn.
                                 </p>
-                            <button className="brand-button">Detaljnjije</button>
+                            <Link   to={"/alingcatalog/" } role="button" className="brands-button">Detaljnjije</Link> 
+
                         </div>
                     </div>
                     <div className="rednew"> 
@@ -67,7 +70,7 @@ export default function Home(){
                             materijali, jednostavna tehnička rešenja i <br></br>
                             izuzetno laka ugradnja. 
                             </p>
-                            <button className="brand-button">Detaljnjije</button>
+                            <Link   to={"/alingcatalog/" } state={{ brand: "Finder" }} role="button" className="brands-button">Detaljnjije</Link> 
                         </div>
                         <div className="brandbox">
                         <h2>PRODEX</h2>
@@ -83,7 +86,7 @@ export default function Home(){
                              
                             
                             </p>
-                            <button className="brand-button">Detaljnjije</button>
+                            <Link   to={"/products/"  } role="button" className="brands-button">Detaljnjije</Link> 
                         </div>
                     </div>
                 </div>

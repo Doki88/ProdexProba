@@ -145,8 +145,19 @@ function ProductItem({product}){
                 className="img-fluid" alt="..."
                 style={{height: "220px", objectFit:"contain"}}/>   
             <hr />
-             
-            <h4>{product.price}KM</h4>  
+            { product.description === "pometru" &&
+                 <h4>{product.price}KM/1m</h4>           
+            } 
+             { product.description !== "pometru" && product.price !== 0 && product.price !== -1 &&
+                 <h4>{product.price}KM</h4>           
+            } 
+
+            {product.price === 0 &&
+                 <h4>{product.price}samo po narudžbi</h4>  
+            }  
+            {product.price === -1 &&
+                 <h4 className="priceNegative">cijena po upitu</h4>  
+            }    
             <Link to={"/products/" + product._id} role="button" className="details-btn">Detaljnjije</Link>
         </div>
     )

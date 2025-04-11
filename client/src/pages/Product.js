@@ -64,16 +64,43 @@ export default function Product(){
                 </div>
                 <div className="titleContainer">
                      <h3>{product.name}</h3>
+
+                     
                     
-                     { product.price!== 0 &&
-                          <p className="price">Cijena: {product.price} KM </p>
+                     { product.price!== 0 && product.description === "pometru" &&  product.price !== -1 &&
+                     
+                          <p className="price">Cijena: {product.price} KM/1m </p>
                      }
-                      {product.price === 0 &&
+                     { product.price!== 0 && product.description !== "pometru" && product.price !== -1 &&
+                        <p className="price">Cijena: {product.price} KM </p>
+                     }
+                    {product.price === 0 &&
                           <p className="priceRed">samo po narudžbi </p>
-                     }
-                        
+                     }  
+                     {product.price === -1 &&
+                          <p className="priceRed">cijena po upitu </p>
+                     }    
+
+                     { product.brand === "Rezervni dijelovi-grijaci" && product.catalogNumber &&
+                     
+                            <div>
+                                 <p>Prodex šifra: {product.serialNumber}</p>
+                                 <p>Kataloški broj: {product.catalogNumber}</p>
+                            </div>
+                             
+                     } 
+                      { product.brand === "Rezervni dijelovi-grijaci" && !product.catalogNumber &&
+                     
+                            <div>
+                                <p>Šifra: {product.serialNumber}</p>
+                                
+                            </div>
+                      
+                     }         
                        
-                     <p>Kataloški broj: {product.serialNumber}</p>
+                    { product.brand !== "Rezervni dijelovi-grijaci"  &&
+                        <p>Kataloški broj: {product.serialNumber}</p>
+                    }
                      
                   
                 </div>

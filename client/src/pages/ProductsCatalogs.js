@@ -14,8 +14,8 @@ export default function ProductsCatalogs(){
         },
         {
             image:  "/images/catalogs/20240111144001083.jpg",
-            title: "Industrijska napajanja Meanwell",
-            brand: ""
+            title: "Tehnoin",
+            brand: "Tehnoin"
         },
         {
             image:  "/images/catalogs/Finder-Panel-Mount-and-Power-Relays-Stylized-Photo.png", 
@@ -28,14 +28,24 @@ export default function ProductsCatalogs(){
             brand: ""
         },
         {
-            image: "/images/catalogs/sklopkaJednopolnaAling.png",
+            image: "/images/catalogs/nopal.png",
             title: "Nopal",
             brand: "Nopal"
         },
         {
-            image: "/images/catalogs/sklopkaJednopolnaAling.png",
+            image: "/images/catalogs/alingConel.png",
             title: "Aling Conel",
             brand: "Aling Conel"
+        },
+        {
+            image: "/images/catalogs/rezervni.png",
+            title: "Rezervni dijelovi",
+            brand: "Rezervni dijelovi"
+        },
+        {
+            image: "/images/catalogs/rezervni.png",
+            title: "Metalka Majur",
+            brand: "Metalka Majur"
         }
     ]
 
@@ -76,12 +86,40 @@ function ProductItem({catalog}){
            
              
             <hr />
-            <Link to={"/productscatalog/" } state={{ brand: catalog.brand }} role="button" > <img src={catalog.image}
-                className="img-fluid" alt="..."
-                style={{height: "220px", objectFit:"contain"}}/>  </Link>
-            <Link to={"/productscatalog/" }  state={{ brand: catalog.brand }} role="button" > 
-                <p className="linktext">{catalog.title}</p>
-             </Link>
+            { catalog.brand === "Aling Conel" &&
+                     
+                <Link to={"/alingcatalog/" }  role="button" > <img src={catalog.image}
+                    className="img-fluid" alt="..."
+                    style={{height: "220px", objectFit:"contain"}}/>  </Link>
+            }
+
+            { catalog.brand === "Aling Conel" &&
+                 <Link to={"/alingcatalog/" }  role="button" > 
+                    <p className="linktext">{catalog.title}</p>
+                </Link>
+            } 
+            { catalog.brand === "Rezervni dijelovi" &&
+                     
+                     <Link to={"/rezervnicatalog/" }  role="button" > <img src={catalog.image}
+                         className="img-fluid" alt="..."
+                         style={{height: "220px", objectFit:"contain"}}/>  </Link>
+                 }
+     
+                 { catalog.brand === "Rezervni dijelovi" &&
+                      <Link to={"/rezervnicatalog/" }  role="button" > 
+                         <p className="linktext">{catalog.title}</p>
+                     </Link>
+                 } 
+            { catalog.brand !== "Aling Conel" && catalog.brand !== "Rezervni dijelovi" &&
+                <Link to={"/productscatalog/" } state={{ brand: catalog.brand }} role="button" > <img src={catalog.image}
+                    className="img-fluid" alt="..."
+                    style={{height: "220px", objectFit:"contain"}}/>  </Link>
+            }
+            { catalog.brand !== "Aling Conel" && catalog.brand !== "Rezervni dijelovi" &&
+                <Link to={"/productscatalog/" }  state={{ brand: catalog.brand }} role="button" > 
+                    <p className="linktext">{catalog.title}</p>
+                </Link>
+            }
             
              
              
