@@ -11,12 +11,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // // import { Footer, Navbar } from './components/layout';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-// import ProductList from './pages/admin/products/ProductList';
-// import CreateProduct from './pages/admin/products/CreateProduct';
+import ProductList from './pages/admin/products/ProductList';
+import CreateProduct from './pages/admin/products/CreateProduct';
 // import { AdminRoute, AuthenticatedUserRoute } from './components/authorization';
-// import Login from './pages/auth/Login';
-// import EditProduct from './pages/admin/products/EditProduct';
-// import ProductDetails from './pages/admin/products/ProductDetails';
+import Login from './pages/auth/Login';
+import EditProduct from './pages/admin/products/EditProduct';
+import ProductDetails from './pages/admin/products/ProductDetails';
 import Products from './pages/Products';
 import ProductsCatalogs from './pages/ProductsCatalogs';
 
@@ -25,6 +25,7 @@ import Product from './pages/Product';
 import FilteredProducts from './pages/FilteredProducts';
 import AlingCatalogs from './catalogs/AlingCatalogs';
 import RezerveCatalog from './catalogs/RezerveCatalog';
+ 
 
 
 function App(){
@@ -51,9 +52,30 @@ function App(){
   //   localStorage.setItem("credentials", str)
   // }, [userCredentials])
 
+  function getStoredCredentials(){
+
+    console.log('Evo kredencijala:')
+    let data = localStorage.getItem("credentials")
+
+    console.log(data)
+
+    if(data){
+      let json = JSON.parse(data)
+      return json
+    }
+    return null
+  }
+
+  const [userCredentials, setUserCredentials] = useState(getStoredCredentials())
+
+  useEffect(() => {
+ 
+    let str = JSON.stringify(userCredentials)
+    localStorage.setItem("credentials", str)
+  }, [userCredentials])
 
   return(
-    <AppContext.Provider>
+    <AppContext.Provider value={{userCredentials, setUserCredentials}}>
       
          <BrowserRouter>  
            <Navbar/>
@@ -69,6 +91,11 @@ function App(){
                     <Route path="/filteredproducts" element={<FilteredProducts/>}></Route> 
                     <Route path="/alingcatalog" element={<AlingCatalogs/>}></Route> 
                     <Route path="/rezervnicatalog" element={<RezerveCatalog/>}></Route> 
+
+                    <Route path="/admin/products" element={<ProductList/>}/>
+                    <Route path="/admin/products/edit/:id" element={ <EditProduct/>  }/> 
+                    <Route path="/admin/products/create" element={<CreateProduct/>}/>
+                    <Route path="/auth/login" element={<Login/>}/>
 
 
                     {/* <Route path="/admin/products" element={<ProductList/>}/> */}

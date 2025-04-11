@@ -97,6 +97,8 @@ const createNewProduct = asyncHandler(async (req, res) => {
     const category = req.body.product.category;
     const price = parseInt(req.body.product.price);
     const description = req.body.product.description;
+
+    console.log('tu sam')
  
     const newProduct = await Product.create({
          brand,

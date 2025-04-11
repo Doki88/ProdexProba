@@ -3,7 +3,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AppContext } from "../../AppContext";
 
 export default function Login(){
-    
+
+     
     const navigate = useNavigate()
     const { userCredentials, setUserCredentials } = useContext(AppContext)
 
@@ -46,7 +47,7 @@ export default function Login(){
                  
                 
                 setUserCredentials(data)
-                navigate("/")
+                navigate("/admin/products")
                 //this.setState({ postId: data.id })
             })
             .catch(error => {
