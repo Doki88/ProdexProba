@@ -13,7 +13,7 @@ export default function ProductsCatalogs(){
             brand: ""
         },
         {
-            image:  "/images/catalogs/20240111144001083.jpg",
+            image:  "/images/catalogs/20240111144001083-removebg-preview.png",
             title: "Tehnoin",
             brand: "Tehnoin"
         },
@@ -38,12 +38,12 @@ export default function ProductsCatalogs(){
             brand: "Aling Conel"
         },
         {
-            image: "/images/catalogs/rezervni.png",
+            image: "/images/catalogs/rezervni-removebg-preview.png",
             title: "Rezervni dijelovi",
             brand: "Rezervni dijelovi"
         },
         {
-            image: "/images/catalogs/rezervni.png",
+            image: "/images/catalogs/rezervni-removebg-preview.png",
             title: "Metalka Majur",
             brand: "Metalka Majur"
         }
