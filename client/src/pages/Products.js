@@ -33,8 +33,6 @@ export default function Products(){
 
     function getProducts(){
 
-        alert('evo nesta')
-       
         let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
         // let url =  `http://localhost:5000/api/products/`
         //let url =  `http://localhost:5000/api/products/${filterParams.brand}/${filterParams.category}`
@@ -66,6 +64,7 @@ export default function Products(){
 
         .then(response => {
             if(response.ok){
+                alert('evo nesta drugo')
                 let totalCount = response.headers.get('X-Total-Count')
                 let pages = Math.ceil(totalCount / pageSize)
                 setTotalPages(pages)
