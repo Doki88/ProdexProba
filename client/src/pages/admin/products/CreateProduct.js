@@ -31,7 +31,8 @@ export default function CreateProduct(){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({product})
         };
-        fetch('http://localhost:5000/api/products', requestOptions)
+        //fetch('http://localhost:5000/api/products', requestOptions)
+        fetch('https://prodexproba.onrender.com/api/products', requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();

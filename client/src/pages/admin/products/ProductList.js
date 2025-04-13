@@ -24,7 +24,8 @@ export default function ProductList(){
        
         //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/${sortColumn.column}/${sortColumn.orderBy}`
          
-        let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}`
+        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}`
+        let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}`
 
         if(search) {
             url =  url + `/${search}`
@@ -61,7 +62,8 @@ export default function ProductList(){
     useEffect(getProducts, [currentPage, search, sortColumn])
 
     function deleteProduct(id) { 
-        fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
+        // fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
+        fetch( `https://prodexproba.onrender.com/products/${id}`, { method: 'DELETE' })
         .then(async response => {
             const data = await response.json();
 

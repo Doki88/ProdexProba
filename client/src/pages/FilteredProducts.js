@@ -27,7 +27,8 @@ export default function FilteredProducts(){
 
     function getProducts(){
        
-        let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+         let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}/`
         
         if(filterParams.brand){
              url = url + `${filterParams.brand}/`

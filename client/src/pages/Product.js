@@ -15,7 +15,8 @@ export default function Product(){
     async function getProductDetails(){
          
         try {
-            let response = await fetch("http://localhost:5000/api/products/" + params.id)
+            //let response = await fetch("http://localhost:5000/api/products/" + params.id)
+            let response = await fetch("https://prodexproba.onrender.com/api/products/" + params.id)
             let data = await response.json()
 
             if(response.ok){

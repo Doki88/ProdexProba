@@ -61,13 +61,11 @@ export default function Products(){
             url = url + searchValue
          }
 
-         alert('evo nesta drugo' + url)
-         fetch(url)
+          fetch(url)
 
         .then(response => {
             if(response.ok){
-                alert('evo nesta drugo')
-                let totalCount = response.headers.get('X-Total-Count')
+                 let totalCount = response.headers.get('X-Total-Count')
                 let pages = Math.ceil(totalCount / pageSize)
                 setTotalPages(pages)
                 return response.json()
@@ -76,8 +74,7 @@ export default function Products(){
             throw new Error()
         })
         .then(data => {
-            console.log("evo date:")
-            console.log(data)
+             console.log(data)
 
             setProducts(data.products)
             setCurrentPage(data.pagination.currentPage)

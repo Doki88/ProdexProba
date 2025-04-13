@@ -20,7 +20,8 @@ export default function EditProduct(){
     function getProduct(){
 
         setProductId(params.id)
-        fetch("http://localhost:5000/api/products/" + params.id)
+        //fetch("http://localhost:5000/api/products/" + params.id)
+        fetch("https://prodexproba.onrender.com/api/products/" + params.id)
             .then(response => {
                 if(response.ok){
                     return response.json()
@@ -62,7 +63,8 @@ export default function EditProduct(){
         body: JSON.stringify({product})
     };
 
-    fetch("http://localhost:5000/api/products/", requestOptions)
+    // fetch("http://localhost:5000/api/products/", requestOptions)
+    fetch("https://prodexproba.onrender.com//api/products/", requestOptions)
         .then(async response => {
             const data = await response.json();
 
