@@ -33,7 +33,9 @@ export default function Products(){
 
     function getProducts(){
 
-        let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+        let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}/`
+
         // let url =  `http://localhost:5000/api/products/`
         //let url =  `http://localhost:5000/api/products/${filterParams.brand}/${filterParams.category}`
         
