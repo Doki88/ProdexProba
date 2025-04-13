@@ -59,7 +59,7 @@ export default function Products(){
             url = url + searchValue
          }
 
-        
+         alert('evo nesta drugo' + url)
          fetch(url)
 
         .then(response => {
