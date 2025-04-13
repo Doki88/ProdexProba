@@ -32,6 +32,8 @@ export default function Products(){
     const [searchValue, setSearchValue] = useState("")
 
     function getProducts(){
+
+        alert('evo nesta')
        
         let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
         // let url =  `http://localhost:5000/api/products/`

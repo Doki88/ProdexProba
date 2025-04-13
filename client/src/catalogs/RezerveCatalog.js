@@ -16,7 +16,7 @@ export default function RezerveCatalog(){
         {
             image: "/images/catalogs/rezervniCatalogs/vesmasina-removebg-preview.png",
             title: "Rezervni dijelovi veš mašine",
-            brand: "Aling Conel-modular"
+            brand: "Rezervni dijelovi-vesmasine"
         } ,
         {
             image: "/images/catalogs/rezervniCatalogs/bojler.png",
