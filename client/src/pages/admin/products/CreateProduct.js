@@ -1,10 +1,20 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../AppContext";
+import FinderFilter from "../../../brandFilters/FinderFilter";
+import NopalFilter from "../../../brandFilters/NopalFilter";
+import TehnoinFilter from "../../../brandFilters/TehnoinFilter";
+import AlingPrestigeFIlter from "../../../brandFilters/AlingPrestigeFIlter";
+import AlingModularFilter from "../../../brandFilters/AlingModularFilter";
+import RezervniGrijaciFilter from "../../../brandFilters/RezervniGrijaciFilter";
 
 export default function CreateProduct(){
 
     const [validationErrors, setValidationErrors] = useState({})
+    const [catalog, setCatalog] = useState("")
+    const [category, setCategory] = useState("")
+
+
 
     const {userCredentials, setUserCredentials } = useContext(AppContext)
 
@@ -16,13 +26,15 @@ export default function CreateProduct(){
         const formData = new FormData(event.target)
 
         const product = Object.fromEntries(formData.entries())
+        product.brand = catalog
+        product.category = category
 
         // if(!product.name || !product.brand || !product.category || !product.price ||
         //     !product.description || !product.image.name)
        
         if(!product.name || !product.brand || !product.category || !product.price ||
-                !product.description){
-                alert("Please fill all the fields!")
+                !product.serialNumber ){
+                alert("Molimo vas da popunite sva obavezna polja!!!")
                 return
         }
 
@@ -31,7 +43,7 @@ export default function CreateProduct(){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({product})
         };
-        //fetch('http://localhost:5000/api/products', requestOptions)
+        // fetch('http://localhost:5000/api/products', requestOptions)
         fetch('https://prodexproba.onrender.com/api/products', requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
@@ -53,6 +65,19 @@ export default function CreateProduct(){
             
     }
 
+    function handleCategory(event){
+        let catalog = event.target.value
+        setCatalog(catalog)
+         
+     }
+
+     function handleCategoryFilter(event){
+        let category = event.target.value
+
+        setCategory(category)
+        
+     }
+
     return(
         <div className="container my-4">
             <div className="row">
@@ -68,28 +93,54 @@ export default function CreateProduct(){
                             </div>
 
                         </div>
+                        <div className="row mb-3">
+                            <label className="col-sm-4 col-form-label">Kataloški broj</label>
+                            <div className="col-sm-8">
+                                <input className="form-control" name="serialNumber"></input>
+                                <span className="text-danger">{validationErrors.serialNumber}</span>
+                            </div>
+
+                        </div>
 
                         <div className="row mb-3">
-                            <label className="col-sm-4 col-form-label">Brend</label>
+                            <label className="col-sm-4 col-form-label">Katalog</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="brand"/>
-                                <span className="text-danger">{validationErrors.brand}</span>
+                                <select className="form-select" name="category" onChange={handleCategory}>
+                                    <option value='Finder'>Finder</option>
+                                    <option value='Nopal'>Nopal</option>
+                                    <option value='Tehnoin'>Tehnoin</option>
+                                    <option value='Aling Conel-prestige'>Aling Conel-prestige</option>
+                                    <option value='Aling Conel-modular'>Aling Conel-modular</option>
+                                    <option value='Rezervni dijelovi-grijaci'>Rezervni dijelovi-grijaci</option>
+                                    <option value='Rezervni dijelovi-vesmasine'>Rezervni dijelovi-vesmasine</option>
+
+                                </select>
+                                <span className="text-danger">{validationErrors.category}</span>
                             </div>
                         </div>
 
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Kategorija</label>
-                            <div className="col-sm-8">
-                                <select className="form-select" name="category">
-                                    <option value='Other'>Drugo</option>
-                                    <option value='prekidaci'>Prekidaci</option>
-                                    <option value='uticnice'>Uticnice</option>
-                                    <option value='releji'>Releji</option>
-                                    <option value='Printers'>Printers</option>
-                                    <option value='Cameras'>Cameras</option>
-                                </select>
-                                <span className="text-danger">{validationErrors.category}</span>
-                            </div>
+                               <div className="col-sm-8">
+                                    { catalog === "Finder" &&
+                                            <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
+                                    }
+                                    { catalog === "Nopal" &&
+                                            <NopalFilter handleCategoryFilter={handleCategoryFilter}/>
+                                    }
+                                    { catalog === "Tehnoin" &&
+                                            <TehnoinFilter handleCategoryFilter={handleCategoryFilter}/>
+                                    }     
+                                    { catalog === "Aling Conel-prestige" &&
+                                            <AlingPrestigeFIlter handleCategoryFilter={handleCategoryFilter}/>
+                                    }   
+                                    { catalog === "Aling Conel-modular" &&
+                                            <AlingModularFilter handleCategoryFilter={handleCategoryFilter}/>
+                                    }  
+                                    { catalog === "Rezervni dijelovi-grijaci" &&
+                                            <RezervniGrijaciFilter handleCategoryFilter={handleCategoryFilter}/>
+                                    }      
+                                </div>                       
                         </div>
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Cijena</label>

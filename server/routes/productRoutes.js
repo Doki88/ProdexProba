@@ -97,6 +97,7 @@ const createNewProduct = asyncHandler(async (req, res) => {
     const category = req.body.product.category;
     const price = parseInt(req.body.product.price);
     const description = req.body.product.description;
+    const serialNumber = req.body.product.serialNumber;
 
     console.log('tu sam')
  
@@ -105,6 +106,7 @@ const createNewProduct = asyncHandler(async (req, res) => {
          name,
          category,
          price,
+         serialNumber,
          // images: images,
          description,
      });

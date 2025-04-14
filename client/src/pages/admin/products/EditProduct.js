@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../../../AppContext";
+import FinderFilter from "../../../brandFilters/FinderFilter";
+import NopalFilter from "../../../brandFilters/NopalFilter";
+import TehnoinFilter from "../../../brandFilters/TehnoinFilter";
+import AlingPrestigeFIlter from "../../../brandFilters/AlingPrestigeFIlter";
+import AlingModularFilter from "../../../brandFilters/AlingModularFilter";
+import RezervniGrijaciFilter from "../../../brandFilters/RezervniGrijaciFilter";
 
 export default function EditProduct(){
 
@@ -46,11 +52,15 @@ export default function EditProduct(){
 
         const formData = new FormData(event.target)
         const product = Object.fromEntries(formData.entries())
+        product.brand = initialData.brand
+        product.category = initialData.category
         product.id = productId
 
-        if(!product.name || !product.brand || !product.category || !product.price 
+         
+
+        if(!product.name || !product.price 
            ){
-                alert("Please fill all the fields!")
+                alert("Molimo vas da popunite sva obavezna polja!!!")
                 return
         }
 
@@ -63,10 +73,11 @@ export default function EditProduct(){
         body: JSON.stringify({product})
     };
 
-    // fetch("http://localhost:5000/api/products/", requestOptions)
-    fetch("https://prodexproba.onrender.com//api/products/", requestOptions)
+    //   fetch("http://localhost:5000/api/products/", requestOptions)
+     fetch("https://prodexproba.onrender.com/api/products/", requestOptions)
         .then(async response => {
             const data = await response.json();
+             
 
             // check for error response
             if (!response.ok) {
@@ -84,6 +95,13 @@ export default function EditProduct(){
 
             
     }
+
+    function handleCategoryFilter(event){
+        
+        let category = event.target.value
+        //setFilterParams({...filterParams, category: category})
+      }
+
 
     return(
         <div className="container my-4">
@@ -108,10 +126,10 @@ export default function EditProduct(){
 
                         </div>
 
-                        <div className="row mb-3">
-                            <label className="col-sm-4 col-form-label">Proizvođač</label>
+                        <div className="row mb-3" >
+                            <label className="col-sm-4 col-form-label">Katalog</label>
                             <div className="col-sm-8">
-                                <input className="form-control" name="brand" defaultValue={initialData.brand}/>
+                                <input className="form-control" name="brand" defaultValue={initialData.brand} disabled/>
                                 <span className="text-danger">{validationErrors.brand}</span>
                             </div>
                         </div>
@@ -119,15 +137,25 @@ export default function EditProduct(){
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Kategorija</label>
                             <div className="col-sm-8">
-                                <select className="form-select" name="category" defaultValue={initialData.category}>
-                                    <option value="">Sve kategorije</option>
-                                    <option value="prekidaci">Prekidaci</option>
-                                    <option value="uticnice">Uticnice</option>
-                                    <option value="releji">Releji</option>
-                                    <option value="sijalicnaGrla">Sijalicna grla</option>  
-                                    <option value="utikaci">Utikaci</option>  
-                                    <option value="Others">Drugo</option>  
-                                </select>
+                                <input className="form-control" name="brand" defaultValue={initialData.category} disabled/>    
+                                {/* { initialData.brand === "Finder" &&
+                                    <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }
+                                { initialData.brand === "Nopal" &&
+                                    <NopalFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }
+                                { initialData.brand === "Tehnoin" &&
+                                    <TehnoinFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }     
+                                { initialData.brand === "Aling Conel-prestige" &&
+                                    <AlingPrestigeFIlter handleCategoryFilter={handleCategoryFilter}/>
+                                }   
+                                { initialData.brand === "Aling Conel-modular" &&
+                                    <AlingModularFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }  
+                                { initialData.brand === "Rezervni dijelovi-grijaci" &&
+                                    <RezervniGrijaciFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }    */}
                                 <span className="text-danger">{validationErrors.category}</span>
                             </div>
                         </div>
@@ -173,10 +201,10 @@ export default function EditProduct(){
 
                         <div className="row">
                             <div className="offeset-sm-4 col-sm-4 d-grid">
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="submit" className="btn btn-primary">Sačuvaj</button>
                             </div>
                             <div className="col-sm-4 d-grid">
-                                <Link className="btn btn-secondary" to='/admin/products' role="button">Cancel</Link>
+                                <Link className="btn btn-secondary" to='/admin/products' role="button">Poništi</Link>
                             </div>
                         </div>
                     </form>

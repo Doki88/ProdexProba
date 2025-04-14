@@ -62,24 +62,29 @@ export default function ProductList(){
     useEffect(getProducts, [currentPage, search, sortColumn])
 
     function deleteProduct(id) { 
-        // fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
-        fetch( `https://prodexproba.onrender.com/products/${id}`, { method: 'DELETE' })
-        .then(async response => {
-            const data = await response.json();
-
-            // check for error response
-            if (!response.ok) {
-                // get error message from body or default to response status
-                const error = (data && data.message) || response.status;
-                //return Promise.reject(error);
-            }
-            getProducts()
-            //setStatus('Delete successful');
-        })
-        .catch(error => {
-            //setErrorMessage(error);
-            console.error('There was an error!', error);
-        });
+        if (window.confirm("Da zi želite da obrišete ovaj artikal?")) {
+            // fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
+            fetch( `https://prodexproba.onrender.com/products/${id}`, { method: 'DELETE' })
+            .then(async response => {
+                const data = await response.json();
+    
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || response.status;
+                    //return Promise.reject(error);
+                }
+                getProducts()
+                //setStatus('Delete successful');
+            })
+            .catch(error => {
+                //setErrorMessage(error);
+                console.error('There was an error!', error);
+            });
+          } else {
+            
+          }
+       
         
     }
 
@@ -151,7 +156,7 @@ export default function ProductList(){
                             Naziv <SortArrow column ="name" sortColumn={sortColumn.column} orderBy={sortColumn.orderBy}/>
                         </th>
                         <th style={{ cursor: "pointer"}} onClick={() => sortTable("brand")}>
-                            Proizvođač <SortArrow column ="brand" sortColumn={sortColumn.column} orderBy={sortColumn.orderBy}/>
+                            Katalog <SortArrow column ="brand" sortColumn={sortColumn.column} orderBy={sortColumn.orderBy}/>
                         </th>
                         <th style={{ cursor: "pointer"}} onClick={() => sortTable("category")}>
                             Kategorija <SortArrow column ="category" sortColumn={sortColumn.column} orderBy={sortColumn.orderBy}/>
