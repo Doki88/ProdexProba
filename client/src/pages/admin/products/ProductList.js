@@ -179,7 +179,7 @@ export default function ProductList(){
                                     <td>{product.name}</td>
                                     <td>{product.brand}</td>
                                     <td>{product.category}</td>
-                                    <td>{product.price}$</td>
+                                    <td>{product.price}KM</td>
                                     {/* <td><img src={product.image1}
                                         width="100" alt="..."/></td>  */}
                                     {/* <td>{product.createdAt.slice(0, 10)}</td> */}
