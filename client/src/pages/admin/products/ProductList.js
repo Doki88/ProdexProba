@@ -67,7 +67,7 @@ export default function ProductList(){
             fetch( `https://prodexproba.onrender.com/products/${id}`, { method: 'DELETE' })
             .then(async response => {
                 const data = await response.json();
-    
+                alert('ev me')
                 // check for error response
                 if (!response.ok) {
                     // get error message from body or default to response status
