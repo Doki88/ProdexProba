@@ -79,6 +79,7 @@ export default function ProductList(){
             })
             .catch(error => {
                 //setErrorMessage(error);
+                alert('error: '+error)
                 console.error('There was an error!', error);
             });
           } else {
