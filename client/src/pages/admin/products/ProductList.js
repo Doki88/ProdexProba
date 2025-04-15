@@ -62,7 +62,7 @@ export default function ProductList(){
     useEffect(getProducts, [currentPage, search, sortColumn])
 
     function deleteProduct(id) { 
-        if (window.confirm("Da zi želite da obrišete ovaj artikal?")) {
+        if (window.confirm("Da zi želite da obrišete ovaj artikal? "+id)) {
             // fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
             fetch( `https://prodexproba.onrender.com/products/${id}`, { method: 'DELETE' })
             .then(async response => {
