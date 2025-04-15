@@ -3,6 +3,19 @@ import Product from '../models/Product.js'
 import asyncHandler from 'express-async-handler';
 
 
+import multer from 'multer'
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, '\client/public/images')
+    },
+    filename: function (req, file, cb) {
+     
+      cb(null, file.originalname)
+    }
+  })
+const upload = multer({ storage })
+ 
+ 
 const productRoutes = express.Router()
 
 const getProducts =  async (req,res) => {
@@ -91,6 +104,8 @@ const getProduct = async (req, res) => {
 	}
 };
 
+ 
+
 const createNewProduct = asyncHandler(async (req, res) => {
     const name = req.body.product.name;
     const brand = req.body.product.brand;
@@ -98,8 +113,9 @@ const createNewProduct = asyncHandler(async (req, res) => {
     const price = parseInt(req.body.product.price);
     const description = req.body.product.description;
     const serialNumber = req.body.product.serialNumber;
+    const file = req.body.product.file;
 
-    console.log('tu sam')
+ 
  
     const newProduct = await Product.create({
          brand,
