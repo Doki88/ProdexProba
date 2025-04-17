@@ -22,21 +22,22 @@ export default function ProductList(){
 
     function getProducts(){
        
-        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/${sortColumn.column}/${sortColumn.orderBy}`
-         
-        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}`
+        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/all/all`
         let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}`
 
         if(search) {
             url =  url + `/${search}`
         } 
-
+          
+ 
         // let url = "http://localhost:4000/products?_page=" + currentPage + "&_limit=" + pageSize
         //     + "&q=" + search + "&_sort=" + sortColumn.column + "&_order=" + sortColumn.orderBy
         //console.log("url=" + url)
         fetch(url)
         .then(response => {
+           
             if(response.ok){
+                 
                 let totalCount = response.headers.get('X-Total-Count')
                 // console.log("X-Total-Count:" + totalCount)
                 let pages = Math.ceil(totalCount / pageSize)

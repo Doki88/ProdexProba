@@ -6,6 +6,7 @@ import cors from 'cors'
 import path from 'path'
 import Product from './models/Product.js'
 import asyncHandler from 'express-async-handler';
+import fs from 'fs'
 
 
 
@@ -99,6 +100,68 @@ app.get('/', (req, res) =>{
             res.status(404);
             throw new Error('Product could not be uploaded.');
         }
+}))
+
+app.put('/api/upload', upload.single('image'), asyncHandler(async (req, res) => {
+
+    console.log('ovde sam jarane')
+ 
+     const name = req.body.name;
+     const brand = req.body.brand;
+     const category = req.body.category;
+     const price = parseFloat(req.body.price);
+     const description = req.body.description;
+     const serialNumber = req.body.serialNumber;
+     const imageName = req.body.imagename;
+     const id = req.body.id;
+ 
+    //  console.log('id:'+id +"\nname:"+name +"\nprice:"+price)
+    //  console.log('image: ' +imageName)
+ 
+  
+
+   
+ 
+   
+  const product = await Product.findById(id);
+
+  console.log('evo productica: ' + product)
+ 
+  if (product) {
+
+    if(imageName){
+
+      const  filePath  = "\client/public" + product.image1 
+
+        fs.unlink(filePath, (err) => {
+          if (err) {
+              console.error(`Error removing file: ${err}`);
+              return;
+          }
+          })
+      
+          console.log(`File ${filePath} has been successfully removed.`);
+     }
+  	product.name = name;
+  	product.price = price;
+  	product.description = description;
+    product.serialNumber = serialNumber;
+    product.image1 ="/images/tehnoin/" + imageName;
+
+ 
+   	await product.save();
+ 
+  	const products = await Product.find({});
+ 
+  	res.json(products);
+  } else {
+  	res.status(404);
+  	throw new Error('Product not found.');
+  }
+
+
+  
+     
 }))
 
 app.listen(port, () => {

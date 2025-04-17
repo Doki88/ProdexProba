@@ -1,6 +1,7 @@
 import express from 'express'
 import Product from '../models/Product.js'
 import asyncHandler from 'express-async-handler';
+import fs from 'fs'
 
 
 import multer from 'multer'
@@ -19,6 +20,8 @@ const upload = multer({ storage })
 const productRoutes = express.Router()
 
 const getProducts =  async (req,res) => {
+
+    console.log('ovdje sam')
    
     const page = parseInt(req.params.page); // 1, 2 or 3
 	const perPage = parseInt(req.params.perPage); // 10
@@ -29,7 +32,9 @@ const getProducts =  async (req,res) => {
     const category = req.params.category;
     const search = req.params.search;
 
-    console.log('category:'+category)
+    // console.log('category:'+category)
+    console.log('search:'+search)
+ 
 
 	let products = await Product.find({});
 
@@ -71,6 +76,11 @@ const getProducts =  async (req,res) => {
         let result = [];
         products.forEach(product => {
             if (product.name.toLowerCase().includes(search.toLowerCase())) {
+                result.push(product);
+            }
+        });
+        products.forEach(product => {
+            if (product.serialNumber.toLowerCase().startsWith(search.toLowerCase())) {
                 result.push(product);
             }
         });
@@ -141,33 +151,55 @@ const createNewProduct = asyncHandler(async (req, res) => {
  const updateProduct = asyncHandler(async (req, res) => {
 	//const { brand, name, category, stock, price, id, productIsNew, description } = req.body;
 
-    const name = req.body.product.name;
-    const brand = req.body.product.brand;
-    const category = req.body.product.category;
-    const price = parseFloat(req.body.product.price);
-    const description = req.body.product.description;
-    const id = req.body.product.id;
+    // const name = req.body.product.name;
+    // const brand = req.body.product.brand;
+    // const category = req.body.product.category;
+    // const price = parseFloat(req.body.product.price);
+    // const description = req.body.product.description;
+    // const id = req.body.product.id;
 
-   
-	const product = await Product.findById(id);
+    const name = req.body.name;
+    const brand = req.body.brand;
+    const category = req.body.category;
+    const price = parseFloat(req.body.price);
+    const description = req.body.description;
+    const serialNumber = req.body.serialNumber;
+    const imageName = req.body.imagename;
+    const id = req.body.id;
 
-	if (product) {
-		product.name = name;
-		product.price = price;
-		product.description = description;
-		product.brand = brand;
-		product.category = category;
+    console.log('id:'+id +"\nname:"+name+"\nbrand:"+brand+"\ncategory:"+ category + "\ndescription:"+description+"\nserialNumber:"+serialNumber)
+
+    console.log('ovde sam')
+
+    const  filePath  = "\client/public/images/rezervniDijelovi/vesmasine/proba.jpg" 
+
+        fs.unlink(filePath, (err) => {
+    if (err) {
+        console.error(`Error removing file: ${err}`);
+        return;
+    }
+    })
+
+    console.log(`File ${filePath} has been successfully removed.`);
+	// const product = await Product.findById(id);
+
+	// if (product) {
+	// 	product.name = name;
+	// 	product.price = price;
+	// 	product.description = description;
+	// 	product.brand = brand;
+	// 	product.category = category;
 	 
 
-	 	await product.save();
+	//  	await product.save();
 
-		const products = await Product.find({});
+	// 	const products = await Product.find({});
 
-		res.json(products);
-	} else {
-		res.status(404);
-		throw new Error('Product not found.');
-	}
+	// 	res.json(products);
+	// } else {
+	// 	res.status(404);
+	// 	throw new Error('Product not found.');
+	// }
 });
 
  const deleteProduct = asyncHandler(async (req, res) => {
