@@ -238,7 +238,7 @@ export default function EditProduct(){
                         <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Slikica</label>
                             <div className="col-sm-8">
-                                <textarea className="form-control" name="description" rows="4" defaultValue={initialData.description}/>
+                                <textarea className="form-control" name="description" rows="4" defaultValue={initialData.image1}/>
                                 <span className="text-danger">{validationErrors.description}</span>
                             </div>
                         </div>     
