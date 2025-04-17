@@ -235,6 +235,14 @@ export default function EditProduct(){
                             </div>
                         </div>
 
+                        <div className="row mb-3">
+                            <label className="col-sm-4 col-form-label">Slikica</label>
+                            <div className="col-sm-8">
+                                <textarea className="form-control" name="description" rows="4" defaultValue={initialData.description}/>
+                                <span className="text-danger">{validationErrors.description}</span>
+                            </div>
+                        </div>     
+
                         {/* <div className="row mb-3">
                             <label className="col-sm-4 col-form-label">Created At</label>
                             <div className="offeset-sm-4 col-sm-8">
