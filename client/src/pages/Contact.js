@@ -1,13 +1,14 @@
  
 import "../styles/contact.css"
 import Main from "./common/Main";
+import Slideshow from "./common/Slideshow";
 
 export default function Contact(){
 
     
     return (
         <>
-             <Main/>
+             <Slideshow/>
              <div className="contact-container">
                 <div className="contact-title">
                     KONTAKT

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Main from "./common/Main"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/productcatalog.css"
+import Slideshow from "./common/Slideshow"
 
 export default function ProductsCatalogs(){
 
@@ -52,7 +53,7 @@ export default function ProductsCatalogs(){
     return (
          <>
              
-            <Main/>
+            <Slideshow/>
 
             <div className="products-main-box">
                 <div>

@@ -146,7 +146,7 @@ app.put('/api/upload', upload.single('image'), asyncHandler(async (req, res) => 
   	product.price = price;
   	product.description = description;
     product.serialNumber = serialNumber;
-    product.image1 ="/images/tehnoin/" + imageName;
+    product.image1 ="/images/rezervniDijelovi/vesmasine/" + imageName;
 
  
    	await product.save();

@@ -1,11 +1,12 @@
 import "../styles/about.css"
 import Main from "./common/Main"
+import Slideshow from "./common/Slideshow"
 
 
 export default function About(){
     return (
         <>
-            <Main/>
+            <Slideshow/>
              <div className="main-box">
                 <div className="inner-box">
                     <div className="text-box">

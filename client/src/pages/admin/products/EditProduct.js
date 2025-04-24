@@ -127,8 +127,8 @@ export default function EditProduct(){
 
         try {
              
-            //const response = await axios.put('http://localhost:5000/api/upload', formNew, {
-            const response = await axios.put('https://prodexproba.onrender.com/api/upload', formNew, {
+            const response = await axios.put('http://localhost:5000/api/upload', formNew, {
+            // const response = await axios.put('https://prodexproba.onrender.com/api/upload', formNew, {
 
 
               headers: {

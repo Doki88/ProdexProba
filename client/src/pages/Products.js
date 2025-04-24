@@ -9,6 +9,7 @@ import TehnoinFilter from "../brandFilters/TehnoinFilter"
 import AlingPrestigeFIlter from "../brandFilters/AlingPrestigeFIlter"
 import AlingModularFilter from "../brandFilters/AlingModularFilter"
 import RezervniGrijaciFilter from "../brandFilters/RezervniGrijaciFilter"
+import Slideshow from "./common/Slideshow"
 
 export default function Products(){
 
@@ -33,8 +34,8 @@ export default function Products(){
 
     function getProducts(){
 
-        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
-        let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}/`
+        let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+        // let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}/`
 
         // let url =  `http://localhost:5000/api/products/`
         //let url =  `http://localhost:5000/api/products/${filterParams.brand}/${filterParams.category}`
@@ -139,7 +140,7 @@ export default function Products(){
     return (
          <>
              
-            <Main/>
+            <Slideshow/>
 
             <div className="products-main-box">
                 <div>

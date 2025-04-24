@@ -4,6 +4,7 @@ import Main from "./common/Main"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/products.css"
 import NopalFilter from "../brandFilters/NopalFilter"
+import Slideshow from "./common/Slideshow"
 
 export default function FilteredProducts(){
 
@@ -27,8 +28,8 @@ export default function FilteredProducts(){
 
     function getProducts(){
        
-        //let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
-         let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}/`
+        let url =  `http://localhost:5000/api/products/${currentPage}/${pageSize}/`
+        //  let url =  `https://prodexproba.onrender.com/api/products/${currentPage}/${pageSize}/`
         
         if(filterParams.brand){
              url = url + `${filterParams.brand}/`
@@ -103,7 +104,7 @@ export default function FilteredProducts(){
     return (
          <>
              
-            <Main/>
+            <Slideshow/>
 
             <div className="products-main-box">
                 <div>

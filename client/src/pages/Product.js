@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import Main from "./common/Main"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/product.css"
+import Slideshow from "./common/Slideshow"
 
 
 export default function Product(){
@@ -15,8 +16,8 @@ export default function Product(){
     async function getProductDetails(){
          
         try {
-            //let response = await fetch("http://localhost:5000/api/products/" + params.id)
-            let response = await fetch("https://prodexproba.onrender.com/api/products/" + params.id)
+            let response = await fetch("http://localhost:5000/api/products/" + params.id)
+            // let response = await fetch("https://prodexproba.onrender.com/api/products/" + params.id)
             let data = await response.json()
 
             if(response.ok){
@@ -50,7 +51,7 @@ export default function Product(){
 
     return (
         <>
-        <Main/>
+        <Slideshow/>
           <div className="mainContainer">
             <div className="upperContainer">
                 <div className="imageContainer1">

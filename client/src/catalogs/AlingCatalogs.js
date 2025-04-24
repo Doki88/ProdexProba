@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/productcatalog.css"
 import Main from "../pages/common/Main"
+import Slideshow from "../pages/common/Slideshow"
 
 export default function AlingCatalogs(){
 
@@ -43,7 +44,7 @@ export default function AlingCatalogs(){
     return (
          <>
              
-            <Main/>
+             <Slideshow/>
 
             <div className="products-main-box">
                 <div>

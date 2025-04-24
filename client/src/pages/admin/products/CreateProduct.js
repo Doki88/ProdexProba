@@ -80,8 +80,8 @@ export default function CreateProduct(){
 
       
         try {
-            const response = await axios.post('https://prodexproba.onrender.com/api/upload', formNew, {
-            // const response = await axios.post('http://localhost:5000/api/upload', formNew, {
+            // const response = await axios.post('https://prodexproba.onrender.com/api/upload', formNew, {
+            const response = await axios.post('http://localhost:5000/api/upload', formNew, {
 
               headers: {
                 'Content-Type': 'multipart/form-data',

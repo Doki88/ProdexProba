@@ -64,8 +64,8 @@ export default function ProductList(){
 
     function deleteProduct(id) { 
         if (window.confirm("Da zi želite da obrišete ovaj artikal? ")) {
-            //fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
-            fetch( `https://prodexproba.onrender.com/api/products/${id}`, { method: 'DELETE' })
+            fetch( `http://localhost:5000/api/products/${id}`, { method: 'DELETE' })
+            // fetch( `https://prodexproba.onrender.com/api/products/${id}`, { method: 'DELETE' })
             .then(async response => {
                 const data = await response.json();
                  // check for error response
