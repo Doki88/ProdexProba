@@ -10,6 +10,8 @@ import AlingPrestigeFIlter from "../brandFilters/AlingPrestigeFIlter"
 import AlingModularFilter from "../brandFilters/AlingModularFilter"
 import RezervniGrijaciFilter from "../brandFilters/RezervniGrijaciFilter"
 import Slideshow from "./common/Slideshow"
+import { FaSearch } from "react-icons/fa"
+import BottomSlider from "./BottomSlider"
 
 export default function Products(){
 
@@ -142,34 +144,15 @@ export default function Products(){
              
             <Slideshow/>
 
-            <div className="products-main-box">
+            {/* <div className="products-main-box">
                 <div>
-                    <div className="title-filters-box">
+                    <div className="title-filters-box1">
                         <div>
                             <h4 className="title-products">PROIZVODI</h4>
                         </div>
                         
-                        <div className="brand-filters">
-                            {/* <div className="brand-filter">
-                                <select onChange={handleBrandFilter}>
-                                    <option value="">Svi brendovi</option>
-                                    <option value="Nopal">Nopal</option>
-                                    <option value="Aling Conel">Aling Conel</option>
-                                    <option value="Finder">Finder</option>
-                                    <option value="HP">HP</option>
-                                </select>
-                            </div>
-                            <div className="brand-filter">
-                                <select onChange={handleCategoryFilter}>
-                                    <option value="">Sve kategorije</option>
-                                    <option value="prekidaci">Prekidaci</option>
-                                    <option value="uticnice">Uticnice</option>
-                                    <option value="releji">Releji</option>
-                                    <option value="sijalicnaGrla">Sijalicna grla</option>  
-                                    <option value="utikaci">Utikaci</option>  
-                                    <option value="Others">Drugo</option>  
-                                </select>
-                            </div> */}
+                        <div className="brand-filters1">
+                            
 
                     { brand === "Finder" &&
                            <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
@@ -192,30 +175,23 @@ export default function Products(){
                            
                         </div>
                        
-                        {/* <div className="col-md-2">
-                            <select className="form-select" onChange={handleSort}>
-                                <option value="0">Order By Newest</option>
-                                <option value="1">Price: Low to High</option>
-                                <option value="2">Price: High to Low</option>
-                            </select>
-                        </div> */}
-                          <div className="col-md-2">
-                             <div className="form-outline" data-mdb-input-init>
-                                <input type="search" id="form1" className="form-control" placeholder="Traži" aria-label="Search" onClick={handleSearch}/>
-                             </div>     
-                          </div>
+                        
+                    <div className="searchInBrand">
+                             <input type="text" placeholder="Pretraga..."  />
+                             <Link to={"/filteredproducts/" } state={{ searchValue: searchValue }} className="search-icon">
+                               <FaSearch />
+                             </Link>
+                    </div>
                     </div>
 
-                    <div className="products-container">
-                       {
-                            products.map((product, index) => {
-                                return (
-                                    <div className="product-container" key={index}>
-                                        <ProductItem product={product}/>
-                                     </div>
-                                )
-                            })
-                       }
+                   
+
+                    <div className="product-grid">
+                        {products.map((product, index) => (
+                            <div className="product-card" key={index}>
+                                 <ProductItem product={product}/>
+                            </div>
+                        ))}
                     </div>
 
                     <ul className="pagination">{pagintationButtons}</ul>
@@ -224,7 +200,58 @@ export default function Products(){
                 </div>
 
             </div>
-            {/* <BottomSlider/> */}
+             */}
+             
+             <div className="three-blocks-container">
+                    <div className="block"> 
+                        <div lassName="title-filters-box1">
+                            <h4 className="title-products1">PROIZVODI</h4>
+                        </div>
+                    </div>
+                    <div className="block"> 
+                        <div className="searchInBrand">
+                             <input type="text" placeholder="Pretraga..."  />
+                             <Link to={"/filteredproducts/" } state={{ searchValue: searchValue }} className="search-icon">
+                               <FaSearch />
+                             </Link>
+                        </div>
+                    </div>
+                    <div className="block">
+                        
+                      <div className="filterBlock">   
+                           
+                                { brand === "Finder" &&
+                                    <FinderFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }
+                                { brand === "Nopal" &&
+                                    <NopalFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }
+                                { brand === "Tehnoin" &&
+                                    <TehnoinFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }     
+                                { brand === "Aling Conel-prestige" &&
+                                    <AlingPrestigeFIlter handleCategoryFilter={handleCategoryFilter}/>
+                                }   
+                                { brand === "Aling Conel-modular" &&
+                                    <AlingModularFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }  
+                                { brand === "Rezervni dijelovi-grijaci" &&
+                                    <RezervniGrijaciFilter handleCategoryFilter={handleCategoryFilter}/>
+                                }      
+                                   
+                         </div>
+                    </div>
+                </div>
+
+                
+                <div className="product-grid">
+                        {products.map((product, index) => (
+                            <div className="product-card" key={index}>
+                                 <ProductItem product={product}/>
+                            </div>
+                        ))}
+                 </div>
+                 <ul className="pagination">{pagintationButtons}</ul>
          </>
     )
 }

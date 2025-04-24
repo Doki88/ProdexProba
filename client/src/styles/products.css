@@ -41,27 +41,21 @@
     margin: 4px 2px;
     cursor: pointer;
 }
-.title-products{
-    border-left: 2px solid #03fcad;
-    margin-left: 10px;
-    padding-left: 10px;
-    height: 60px;
-    font-size: 40px;
-    font-weight: bold;
-    
-}
-.brand-filters {
+
+.brand-filters1 {
     display: flex;
     float: right;
     position: absolute;
     margin-left: 670px;
     
   }
-.brand-filter{
+.brand-filter1{
   margin-left: 10px;
 }
 
-.title-filters-box{
+.title-filters-box1{
+  margin-left: 1%;
+  margin-top: 3%;
   display: flex;
   position: relative;
   align-items: center;
@@ -75,4 +69,128 @@
 }
 .priceNegative {
   color: red;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* 📱 Responsive: 1 column on screens <= 768px */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search input {
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: 100px;
+    border: 1px solid #ccc;
+  }
+  
+}
+
+
+.searchInBrand {
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  order: 3;
+  margin-top: 20px;
+}
+
+.searchInBrand input{
+   width: 200px;
+}
+.search input {
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: 300px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+}
+
+
+.three-blocks-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+}
+
+.block {
+  flex: 1;
+   /* background-color: yellow;
+  border: 1px solid #ccc; */
+  /* text-align: center; */
+  border-radius: 8px;
+}
+
+/* 📱 Mobile: stack vertically */
+@media (max-width: 768px) {
+  .three-blocks-container {
+    flex-direction: column;
+  }
+}
+
+.pagination {
+  margin-left: 20px;
+}
+
+.brandFil {
+  margin-top: 45px;
+}
+
+.searchContainer{
+  margin-top: 45px;
+}
+
+.filterBlock {
+  margin-top: 20px;
+}
+
+/* .title-products1{
+  border-left: 2px solid #03fcad;
+  
+ 
+  height: 60px;
+  font-size: 40px;
+  font-weight: bold;
+} */
+
+.title-products1{
+  border-left: 2px solid #03fcad;
+  margin-left: 10px;
+  padding-left: 10px;
+  height: 60px;
+  font-size: 40px;
+  font-weight: bold;
+  
 }

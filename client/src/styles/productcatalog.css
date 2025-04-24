@@ -59,6 +59,11 @@
   }
 .brand-filter{
   margin-left: 10px;
+  
+}
+.brand-filter select{
+  height: 30px;
+  
 }
 
 .title-filters-box{

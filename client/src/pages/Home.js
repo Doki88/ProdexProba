@@ -2,7 +2,9 @@ import { Link } from "react-router-dom"
 import "../styles/home.css"
 import Main from "./common/Main"
 import Slideshow from "./common/Slideshow"
+import BottomSlider from "./BottomSlider"
    
+
 export default function Home(){
 
     
@@ -94,6 +96,9 @@ export default function Home(){
                 </div>
                  
                 </div>
+
+                <BottomSlider  />
+
                                   
          </>
     )
