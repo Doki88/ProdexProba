@@ -240,32 +240,7 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .nav-wrapper {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    padding-top: 10px;
-  }
-
-  .nav-wrapper.open {
-    display: flex;
-  }
-
-  .mobile-header {
-    display: flex;
-  }
-
-  .desktop-title {
-    display: none;
-  }
-
-  .navbar {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-
+ 
   .search {
     width: 100%;
     margin-left: 10%;;
