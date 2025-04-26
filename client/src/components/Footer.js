@@ -73,7 +73,7 @@ import "../styles/footer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'; // formerly faMapMarkerAlt
-
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
@@ -107,8 +107,7 @@ const Footer = () => {
         </div>
         <div className="footer-box">
             <div className="flex-container-two">
-                <img src="/images/svg/reshot-icon-email-P9WA8LS724.svg"
-                    className="img-svg-email" alt="..."/>   
+              <FontAwesomeIcon icon={faEnvelope} style={{ color: 'white', fontSize: '16px' }} />
             </div>
             <div className="flex-container-two-text">
                 <p>Email:<br></br>prodexmd@yahoo.com</p> 

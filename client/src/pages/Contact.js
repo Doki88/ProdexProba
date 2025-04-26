@@ -1,7 +1,11 @@
  
 import "../styles/contact.css"
-import Main from "./common/Main";
 import Slideshow from "./common/Slideshow";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'; // formerly faMapMarkerAlt
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Contact(){
 
@@ -9,7 +13,7 @@ export default function Contact(){
     return (
         <>
              <Slideshow/>
-             <div className="contact-container">
+             {/* <div className="contact-container">
                 <div className="contact-title">
                     KONTAKT
                 </div>
@@ -93,7 +97,68 @@ export default function Contact(){
                     </div>
                 </div>
                     
+            </div> */}
+           <div className="layout">
+                <div className="topContact"><h3>KONTAKT</h3></div>
+                <div className="middle">
+                    <div className="box">
+                        <div className="flex-container-two-contact">
+                            <FontAwesomeIcon icon={faLocationDot} style={{ color: '#03fcad' }} /> 
+                         </div>
+                         <div className="flex-container-two-text-contact">
+                            <p>Adresa:<br></br>Cara Lazara 35, 74480 Modriča, BIH</p>       
+                        </div>
+                        </div>
+                        <div className="box">
+                            <div className="flex-container-two-contact">
+                                <FontAwesomeIcon icon={faPhone} style={{ color: '#03fcad' }} />
+                            
+                                </div>
+                                <div className="flex-container-two-multi-contact">
+                                    <div className="flex-container-two-text-multi-contact">
+                                        <p>Tel:<br></br>053/820-891</p>
+                                    </div>
+                                                    
+                                    <div className="flex-container-two-text-multi-contact">
+                                       <p>Mob:<br></br>066-119-921</p>
+                                    </div>
+                                </div>
+                        </div>
+                        <div className="box">
+                            <div className="flex-container-two-contact">
+                                <FontAwesomeIcon icon={faEnvelope} style={{ color: '#03fcad', fontSize: '16px' }} />
+                            </div>
+                            <div className="flex-container-two-text-contact">
+                                 <p>Email:<br></br>prodexmd@yahoo.com</p> 
+                             </div>
+                        </div>
+                    </div>
+                <div className="bottom"><b>Radno vreme:</b>  Pon-Pet: 7:30 - 16:30h | Sub: 7:30 - 14:30h</div>
+                <div className="formTitle"><h3>PIŠITE NAM</h3></div>
+                
+                    <div className="formMiddle">
+                        <div className="formBox">
+                            <input type="text" className="firstrow-data" placeholder="Ime i prezime" name="fanlname"/>
+                        </div>
+                        <div className="formBox">
+                             <input type="text" className="firstrow-data" placeholder="Broj telefona" name="phone"/>
+                        </div>
+                        <div className="formBox">
+                            <input type="text" className="firstrow-data" placeholder="Email" name="email"/> 
+                        </div>
+                    </div>
+                    <div className="formMessageTitle">
+                        <input type="text" className="message-title-input" placeholder="Naslov poruke" name="msgtitle"/>            
+                    </div>
+                    <div className="formMessageDescription"><textarea className="text-area-data">Tekst poruke...</textarea></div>
+                    <div className="formMessageButton">
+                                <button>Pošalji</button>
+                    </div>
+                
+
             </div>
+            
          </>
+         
     )
 }
