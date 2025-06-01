@@ -4,6 +4,7 @@ import Main from "./common/Main"
 // import BottomSlider from "./common/BottomSlider"
 import "../styles/productcatalog.css"
 import Slideshow from "./common/Slideshow"
+import BottomSlider from "./BottomSlider"
 
 export default function ProductsCatalogs(){
 
@@ -55,7 +56,7 @@ export default function ProductsCatalogs(){
              
             <Slideshow/>
 
-            <div className="products-main-box">
+            {/* <div className="products-main-box">
                 <div>
                  
 
@@ -74,8 +75,15 @@ export default function ProductsCatalogs(){
                     </div>       
                 </div>
 
+            </div> */}
+             <div className="product-grid">
+                        {catalogs.map((catalog, index) => (
+                            <div className="product-card" key={index}>
+                                 <ProductItem catalog={catalog}/>
+                            </div>
+                        ))}
             </div>
-            {/* <BottomSlider/> */}
+             <BottomSlider/>
          </>
     )
 }

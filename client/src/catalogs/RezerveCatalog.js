@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import "../styles/productcatalog.css"
 import Main from "../pages/common/Main"
 import Slideshow from "../pages/common/Slideshow"
+import BottomSlider from "../pages/BottomSlider"
 
 export default function RezerveCatalog(){
 
@@ -46,7 +47,7 @@ export default function RezerveCatalog(){
              
             <Slideshow/>
 
-            <div className="products-main-box">
+            {/* <div className="products-main-box">
                 <div>
                  
 
@@ -65,8 +66,15 @@ export default function RezerveCatalog(){
                     </div>       
                 </div>
 
+            </div> */}
+             <div className="product-grid">
+                        {catalogs.map((catalog, index) => (
+                            <div className="product-card" key={index}>
+                                 <ProductItem catalog={catalog}/>
+                            </div>
+                        ))}
             </div>
-            {/* <BottomSlider/> */}
+            <BottomSlider/>
          </>
     )
 }

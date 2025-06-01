@@ -74,7 +74,7 @@ export default function Home(){
                                 materijali, jednostavna tehnička rešenja i <br></br>
                                 izuzetno laka ugradnja. 
                                 </p>
-                                <Link   to={"/alingcatalog/" } state={{ brand: "Finder" }} role="button" className="brands-button">Detaljnjije</Link> 
+                                <Link   to={"/alingcatalog/" }   role="button" className="brands-button">Detaljnjije</Link> 
                             </div>
                             <div className="brandbox">
                             <h2 className="rezDel">PRODEX</h2>
@@ -90,7 +90,7 @@ export default function Home(){
                                 
                                 
                                 </p>
-                                <Link   to={"/products/"  } role="button" className="brands-button">Detaljnjije</Link> 
+                                <Link   to={"/rezervnicatalog/" }  role="button" className="brands-button">Detaljnjije</Link> 
                             
                         </div>
                 </div>

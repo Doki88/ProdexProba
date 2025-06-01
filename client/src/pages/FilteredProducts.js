@@ -116,7 +116,7 @@ export default function FilteredProducts(){
                         
                     </div>
 
-                    <div className="products-container">
+                    {/* <div className="products-container">
                        {
                             products.map((product, index) => {
                                 return (
@@ -126,7 +126,14 @@ export default function FilteredProducts(){
                                 )
                             })
                        }
-                    </div>
+                    </div> */}
+                    <div className="product-grid">
+                        {products.map((product, index) => (
+                            <div className="product-card" key={index}>
+                                 <ProductItem product={product}/>
+                            </div>
+                        ))}
+                     </div>
 
                     <ul className="pagination">{pagintationButtons}</ul>
 
