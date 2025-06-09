@@ -68,6 +68,7 @@ export default function Products(){
 
         .then(response => {
             if(response.ok){
+                console.log('U redu je sve ipak')
                  let totalCount = response.headers.get('X-Total-Count')
                 let pages = Math.ceil(totalCount / pageSize)
                 setTotalPages(pages)
@@ -77,14 +78,14 @@ export default function Products(){
             throw new Error()
         })
         .then(data => {
-             console.log(data)
+            console.log(data)
 
             setProducts(data.products)
             setCurrentPage(data.pagination.currentPage)
             setTotalPages(data.pagination.totalPages)
         })
         .catch(error => {
-            alert("Unable to get the data")
+            alert("Unable to get the data"+error)
         })
     }
  
