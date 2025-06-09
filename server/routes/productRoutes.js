@@ -38,7 +38,7 @@ const getProducts =  async (req,res) => {
     try {
         products = await Product.find({});
     } catch (error) {
-        res.json('ovo je greska Baja: '+error);
+        res.json('ovo je greska Baja valjda: '+error);
         return;
     }
 
