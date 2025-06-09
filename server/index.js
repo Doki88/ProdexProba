@@ -23,6 +23,21 @@ const storage = multer.diskStorage({
   })
 const upload = multer({ storage })
 
+///////////////
+import axios from 'axios'
+
+axios.get('https://api.ipify.org?format=json')
+  .then(response => {
+    console.log("Your server's public IP is:", response.data.ip);
+  })
+  .catch(error => {
+    console.error("Could not fetch IP:", error);
+  });
+
+
+
+///////////////
+
 //Routes
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
