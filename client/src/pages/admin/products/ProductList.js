@@ -56,7 +56,7 @@ export default function ProductList(){
             setTotalPages(data.pagination.totalPages)
         })
         .catch(error => {
-            alert("Unable to get the data")
+            alert("Unable to get the data now" + error )
         })
     }
 
