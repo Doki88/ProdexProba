@@ -34,9 +34,15 @@ const getProducts =  async (req,res) => {
 
     // console.log('category:'+category)
     console.log('search:'+search)
- 
+    let products = []
+    try {
+        products = await Product.find({});
+    } catch (error) {
+        res.json('ovo je greska Baja');
+        return;
+    }
 
-	let products = await Product.find({});
+	 
 
     if(brand && brand!='all'){
             products = products.filter((product) => product.brand == brand);
